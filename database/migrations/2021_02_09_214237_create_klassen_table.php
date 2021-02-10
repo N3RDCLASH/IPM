@@ -15,9 +15,9 @@ class CreateKlassenTable extends Migration
     {
         Schema::create('klassen', function (Blueprint $table) {
             $table->id();
-            $table->string('Klas');
-            $table->integer('RichtingID');
-            $table->integer('Jaar');
+            $table->string('klas');
+            $table->integer('richting_id');
+            $table->integer('jaar');
         });
     }
 

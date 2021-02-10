@@ -15,9 +15,9 @@ class CreateStudentklasTable extends Migration
     {
         Schema::create('studentklas', function (Blueprint $table) {
             $table->id();
-            $table->integer('StudentKlasID');
-            $table->integer('KlasID');
-            $table->string('Schooljaar');
+            $table->integer('student_klas_id');
+            $table->integer('klas_id');
+            $table->string('school_jaar');
         });
     }
 

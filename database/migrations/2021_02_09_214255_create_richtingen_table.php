@@ -15,7 +15,7 @@ class CreateRichtingenTable extends Migration
     {
         Schema::create('richtingen', function (Blueprint $table) {
             $table->id();
-            $table->string('Richtingnaam');
+            $table->string('richting_naam');
         });
     }
 

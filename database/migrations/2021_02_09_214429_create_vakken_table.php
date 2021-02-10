@@ -15,7 +15,7 @@ class CreateVakkenTable extends Migration
     {
         Schema::create('vakken', function (Blueprint $table) {
             $table->id();
-            $table->string('Vaknaam');
+            $table->string('vak_naam');
         });
     }
 

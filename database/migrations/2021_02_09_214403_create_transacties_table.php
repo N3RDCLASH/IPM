@@ -15,8 +15,8 @@ class CreateTransactiesTable extends Migration
     {
         Schema::create('transacties', function (Blueprint $table) {
             $table->id();
-            $table->integer('ServiceID');
-            $table->timestamp('TransactieDatum')->useCurrent();
+            $table->integer('service_id');
+            $table->timestamp('transactie_datum')->useCurrent();
         });
     }
 
