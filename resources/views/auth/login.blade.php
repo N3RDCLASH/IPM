@@ -24,7 +24,7 @@
                                 </span>
                             </div>
                             <input class="form-control{{ $errors->has('user_naam') ? ' is-invalid' : '' }}"
-                                placeholder="{{ __('Usernaam') }}" type="text" name="user_naam"
+                                placeholder="{{ __('Username') }}" type="text" name="user_naam"
                                 value="{{ old('user_naam') }}" required autofocus>
 
                             @if ($errors->has('user_naam'))
@@ -71,9 +71,6 @@
             </form>
             <a href="{{ route('password.request') }}" class="btn btn-link">
                 {{ __('Forgot password') }}
-            </a>
-            <a href="{{ route('register') }}" class="btn btn-link float-right">
-                {{ __('Create Account') }}
             </a>
         </div>
     </div>
