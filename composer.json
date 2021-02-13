@@ -1,5 +1,5 @@
 {
-    "name": "laravel/laravel",
+    "name": "natin/ipm",
     "type": "project",
     "description": "The Laravel Framework.",
     "keywords": [
@@ -15,7 +15,8 @@
         "laravel-frontend-presets/paper": "^1.0",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.2"
+        "laravel/ui": "^3.2",
+        "spatie/laravel-permission": "^4.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
