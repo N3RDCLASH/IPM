@@ -1,12 +1,12 @@
 {{-- Main App --}}
 <div class="sidebar" data-color="white" data-active-color="danger">
     <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+        <a href="" class="simple-text logo-mini">
             <div class="logo-image-small">
                 <img src="{{ asset('paper') }}/img/natin-logo.png">
             </div>
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="http://natin.sr" target="_blank" class="simple-text logo-normal">
             {{ __('Natin') }}
         </a>
     </div>
