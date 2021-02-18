@@ -1,3 +1,7 @@
+<?php
+    use App\Http\Controllers\ServicesController;
+    $url= action([ServicesController::class,'store']);
+?>
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
@@ -10,18 +14,42 @@
             <div class="table-responsive">
                 <table class="table">
                     <thead class=" text-primary">
-                        <th>
-                            Naam
-                        </th>
-                        <th>
-                            Beschrijving
-                        </th>
-                        <th>
-                            Document
-                        </th>
+                        <th>Naam</th>
+                        <th>Beschrijving</th>
+                        <th>Document</th>
+                        <th></th>
                     </thead>
                     <tbody>
-
+                        @if($services!=="")
+                        @foreach($services as $service)
+                        <tr data-id="">
+                            <td>{{$service->service_naam}}</td>
+                            <td>{{$service->beschrijving}}</td>
+                            <td>{{$service->document}}</td>
+                            <td><a href="/services/{{$service->service_id}}">
+                                    <i class="material-icons edit">edit</i>
+                                </a>
+                            </td>
+                            <td>
+                                <form action="{{action([KandidatenController::class,'destroy'],[$service])}}"
+                                    id="delete_form_{{$service->service_id}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <a onclick="confirmDelete({{$service->service_id}})">                                   <i class="material-icons edit red-text" class="delete_btn">delete</i>
+                                    </a>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                        @else
+                        <tr>
+                            <td>
+                                Geen kandidaten beschikbaar
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -41,24 +69,21 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="{{$url}}" method="POST">
+                    @csrf()
                     <div class="form-group">
                         <label for="serviceInputNaam">Service Naam</label>
                         <input type="text" class="form-control" id="serviceInputNaam" name="service_naam" aria-describedby="naamHelp"
                             placeholder="Vul service naam in...">
-                        <small id="naamHelp" class="form-text text-muted">idk yet...</small>
                     </div>
                     <div class="form-group">
                         <label for="serviceInputBeschrijving">Service Beschrijving</label>
                         <input type="text" class="form-control" id="serviceInputBeschrijving" name="service_beschrijving"
                             aria-describedby="beschrijvingHelp" placeholder="Vul service beschrijving in...">
-                        <small id="beschrijvingHelp" class="form-text text-muted">still dunno lol....</small>
                     </div>
                     <div class="form-group">
                         <label for="serviceInputDocument">Service Document</label>
                         <input type="file" class="form-control-file" id="serviceInputDocument" name="service_document">
-                        
-                        {{-- <small id="beschrijvingHelp" class="form-text text-muted">still dunno lol....</small> --}}
                     </div>
 
 
