@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Service;
+use Facade\FlareClient\Stacktrace\File;
 
 class ServicesController extends Controller
 {
@@ -15,9 +16,7 @@ class ServicesController extends Controller
     public function index()
     {
         $services = Service::All();
-         return view('pages.services')->with(['services' => $services]);
-
-
+        return view('pages.services')->with(['services' => $services]);
     }
 
     /**
@@ -39,8 +38,9 @@ class ServicesController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        $service= new Service();
-        $service->createService($request->only('service_naam', 'service_beschrijving', 'service_document'));
+        $service = new Service();
+        $service->create(["service_naam" => $request->service_naam, "service_beschrijving" => $request->service_beschrijving, 'service_document' => $this->fileUpload($request)]);
+        return redirect(route('services'));
     }
 
     /**
@@ -86,5 +86,18 @@ class ServicesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function fileUpload(Request $req)
+    {
+
+        if ($req->file()) {
+            $fileName = time() . '_' . $req->file('service_document')->getClientOriginalName();
+            $filePath = $req->file('service_document')->storeAs('uploads', $fileName, 'public');
+
+            // returns storage path
+            return ('/storage/' . $filePath);
+        }
+        return 'lol';
     }
 }

@@ -24,18 +24,19 @@
                         @foreach($services as $service)
                         <tr data-id="">
                             <td>{{$service->service_naam}}</td>
-                            <td>{{$service->beschrijving}}</td>
-                            <td>{{$service->document}}</td>
+                            <td>{{$service->service_beschrijving}}</td>
+                            <td>{{$service->service_document}}</td>
                             <td><a href="/services/{{$service->service_id}}">
-                                    <i class="material-icons edit">edit</i>
+                                    <i class="fas fa-edit"></i>
                                 </a>
                             </td>
                             <td>
-                                <form action="{{action([KandidatenController::class,'destroy'],[$service])}}"
+                                <form action="{{action([ServicesController::class,'destroy'],[$service])}}"
                                     id="delete_form_{{$service->service_id}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a onclick="confirmDelete({{$service->service_id}})">                                   <i class="material-icons edit red-text" class="delete_btn">delete</i>
+                                    <a onclick="confirmDelete({{$service->service_id}})">
+                                        <i class="fas fa-trash-alt"></i>
                                     </a>
                                 </form>
                             </td>
@@ -69,17 +70,28 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{$url}}" method="POST">
+                <form action="{{$url}}" method="POST" enctype="multipart/form-data">
                     @csrf()
+
+                    @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                     <div class="form-group">
                         <label for="serviceInputNaam">Service Naam</label>
-                        <input type="text" class="form-control" id="serviceInputNaam" name="service_naam" aria-describedby="naamHelp"
-                            placeholder="Vul service naam in...">
+                        <input type="text" class="form-control" id="serviceInputNaam" name="service_naam"
+                            aria-describedby="naamHelp" placeholder="Vul service naam in...">
                     </div>
                     <div class="form-group">
                         <label for="serviceInputBeschrijving">Service Beschrijving</label>
-                        <input type="text" class="form-control" id="serviceInputBeschrijving" name="service_beschrijving"
-                            aria-describedby="beschrijvingHelp" placeholder="Vul service beschrijving in...">
+                        <input type="text" class="form-control" id="serviceInputBeschrijving"
+                            name="service_beschrijving" aria-describedby="beschrijvingHelp"
+                            placeholder="Vul service beschrijving in...">
                     </div>
                     <div class="form-group">
                         <label for="serviceInputDocument">Service Document</label>

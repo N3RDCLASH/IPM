@@ -20,7 +20,7 @@ $user = Auth::user();
 @endsection
 
 @push('scripts')
-<script>
+<script> 
 
 </script>
 @endpush

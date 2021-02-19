@@ -18,12 +18,12 @@ class Service extends Model
 
     public function createService($data)
     {
-        dd($data);
-        // $this::create([
-        //     "service_naam" => $data['service_naam'],
-        //     "service_beschrijving" => $data['service_beschrijving'],
-        //     "service_document" => $data['service_document'],
-        // ]);
+        // dd($data);
+        $this::create([
+            "service_naam" => $data['service_naam'],
+            "service_beschrijving" => $data['service_beschrijving'],
+            "service_document" => $data['service_document'],
+        ]);
     }
 
     public function getOneService($id)
@@ -38,5 +38,4 @@ class Service extends Model
     {
         return $this::where('service_id', $id)->delete();
     }
-
 }

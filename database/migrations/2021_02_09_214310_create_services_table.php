@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
 class CreateServicesTable extends Migration
 {
@@ -17,7 +18,9 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->string('service_naam');
             $table->string('service_beschrijving');
-            $table->binary('service_document');
+            $table->string('service_document');
+            $table->datetime('created_at');
+            $table->datetime('updated_at');
         });
     }
 

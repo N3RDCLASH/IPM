@@ -26,7 +26,7 @@ The above copyright notice and this permission notice shall be included in all c
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
     <!-- Extra details for Live View on GitHub Pages -->
-    
+
     <title>
         {{ __('IPM') }}
     </title>
@@ -41,18 +41,18 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('paper') }}/demo/demo.css" rel="stylesheet" />
     <link href="{{ asset('paper') }}/css/index.css" rel="stylesheet" />
-
+    
 </head>
 
 <body class="{{ $class }}">
     
     @auth()
-        @include('layouts.page_templates.auth')
-        {{-- @include('layouts.navbars.fixed-plugin') --}}
+    @include('layouts.page_templates.auth')
+    {{-- @include('layouts.navbars.fixed-plugin') --}}
     @endauth
-    
+
     @guest
-        @include('layouts.page_templates.guest')
+    @include('layouts.page_templates.guest')
     @endguest
 
     <!--   Core JS Files   -->
@@ -72,9 +72,11 @@ The above copyright notice and this permission notice shall be included in all c
     <script src="{{ asset('paper') }}/demo/demo.js"></script>
     <!-- Sharrre libray -->
     <script src="../assets/demo/jquery.sharrre.js"></script>
+    {{--  Fontawesome Icons--}}
+    <script src="https://kit.fontawesome.com/b6a8b0b827.js" crossorigin="anonymous"></script>
     
     @stack('scripts')
-
+    
     @include('layouts.navbars.fixed-plugin-js')
 </body>
 

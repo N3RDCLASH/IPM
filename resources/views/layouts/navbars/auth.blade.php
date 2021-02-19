@@ -13,25 +13,25 @@
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="{{ $elementActive == 'dashboard' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'dashboard') }}">
+                <a href="{{ route('home') }}">
                     <i class="nc-icon nc-bank"></i>
                     <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'users' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'users') }}">
+                <a href="{{ route('users') }}">
                     <i class="nc-icon nc-single-02"></i>
                     <p>{{ __('Users') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'services' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'services') }}">
+                <a href="{{ route('services') }}">
                     <i class="nc-icon nc-bank"></i>
                     <p>{{ __('Services') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'saldo' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'saldo') }}">
+                <a href="{{ route('saldo') }}">
                     <i class="nc-icon nc-money-coins"></i>
                     <p>{{ __('Saldo') }}</p>
                 </a>
