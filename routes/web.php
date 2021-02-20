@@ -38,8 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
 		// ]
 	);
 
-	Route::resource('service', 'App\Http\Controllers\ServicesController')->name('index', 'services');
-	Route::resource('user', 'App\Http\Controllers\UserController')->name('index', 'users');
+	Route::resource('services', 'App\Http\Controllers\ServicesController')->name('index', 'services');
+	Route::resource('users', 'App\Http\Controllers\UserController')->name('index', 'users');
+	Route::resource('klassen', 'App\Http\Controllers\KlasController')->name('index', 'klassen');
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);

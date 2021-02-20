@@ -24,6 +24,12 @@
                     <p>{{ __('Users') }}</p>
                 </a>
             </li>
+            <li class="{{ $elementActive == 'klassen' ? 'active' : '' }}">
+                <a href="{{ route('klassen') }}">
+                    <i class="nc-icon nc-ruler-pencil"></i>
+                    <p>{{ __('Klassen') }}</p>
+                </a>
+            </li>
             <li class="{{ $elementActive == 'services' ? 'active' : '' }}">
                 <a href="{{ route('services') }}">
                     <i class="nc-icon nc-bank"></i>

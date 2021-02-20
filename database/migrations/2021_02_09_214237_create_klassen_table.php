@@ -17,7 +17,9 @@ class CreateKlassenTable extends Migration
             $table->id();
             $table->string('klas');
             $table->integer('richting_id');
-            $table->integer('jaar');
+            $table->string('jaar');
+            $table->datetime('created_at');
+            $table->datetime('updated_at');
         });
     }
 

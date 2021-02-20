@@ -38,14 +38,13 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- CSS Files -->
     <link href="{{ asset('paper') }}/css/bootstrap.min.css" rel="stylesheet" />
     <link href="{{ asset('paper') }}/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="{{ asset('paper') }}/demo/demo.css" rel="stylesheet" />
-    <link href="{{ asset('paper') }}/css/index.css" rel="stylesheet" />
     
+    <link href="{{ asset('paper') }}/css/index.css" rel="stylesheet" />
+
 </head>
 
 <body class="{{ $class }}">
-    
+
     @auth()
     @include('layouts.page_templates.auth')
     {{-- @include('layouts.navbars.fixed-plugin') --}}
@@ -55,6 +54,7 @@ The above copyright notice and this permission notice shall be included in all c
     @include('layouts.page_templates.guest')
     @endguest
 
+    <script src="{{ asset('paper') }}/js/core/main.js"></script>
     <!--   Core JS Files   -->
     <script src="{{ asset('paper') }}/js/core/jquery.min.js"></script>
     <script src="{{ asset('paper') }}/js/core/popper.min.js"></script>
@@ -74,9 +74,11 @@ The above copyright notice and this permission notice shall be included in all c
     <script src="../assets/demo/jquery.sharrre.js"></script>
     {{--  Fontawesome Icons--}}
     <script src="https://kit.fontawesome.com/b6a8b0b827.js" crossorigin="anonymous"></script>
-    
+    {{-- Sweet Alert 2 --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     @stack('scripts')
-    
+
     @include('layouts.navbars.fixed-plugin-js')
 </body>
 

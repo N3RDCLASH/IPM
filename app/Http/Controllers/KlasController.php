@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Klas;
 use Illuminate\Http\Request;
-use App\Models\Service;
-use Facade\FlareClient\Stacktrace\File;
 
-class ServicesController extends Controller
+class KlasController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +15,9 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        $services = Service::All();
-        return view('pages.services')->with(['services' => $services]);
+        //
+        $klassen = Klas::all();
+        return view('pages.klassen')->with(["klassen" => $klassen]);
     }
 
     /**
@@ -37,10 +38,9 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        $service = new Service();
-        $service->create(["service_naam" => $request->service_naam, "service_beschrijving" => $request->service_beschrijving, 'service_document' => $this->fileUpload($request)]);
-        return redirect(route('services'));
+        $klas = new Klas();
+        $klas->createKlas($request->only(["klas", "richting_id", "jaar"]));
+        return redirect(route('klassen'));
     }
 
     /**
@@ -52,6 +52,8 @@ class ServicesController extends Controller
     public function show($id)
     {
         //
+        $klas = Klas::find($id);
+        return view('pages.klassen.klas')->with(['klas' => $klas]);
     }
 
     /**
@@ -62,7 +64,8 @@ class ServicesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $klas = Klas::find($id);
+        return view('pages.klassen.edit')->with(['klas' => $klas]);
     }
 
     /**
@@ -74,7 +77,9 @@ class ServicesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $klas = new Klas();
+        $klas->updateKlas($request->only(["klas", "richting_id", "jaar"]),$id);
+        return redirect(route('klassen'));
     }
 
     /**
@@ -85,18 +90,8 @@ class ServicesController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
-
-    public function fileUpload(Request $req)
-    {
-
-        if ($req->file()) {
-            $fileName = time() . '_' . $req->file('service_document')->getClientOriginalName();
-            $filePath = $req->file('service_document')->storeAs('uploads', $fileName, 'public');
-
-            // returns storage path
-            return ('/storage/' . $filePath);
-        }
+        $klas = new Klas();
+        $klas->deleteKlas($id);
+        return redirect(route('klassen'));
     }
 }
