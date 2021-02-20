@@ -49,7 +49,7 @@ $year = date('Y');
                                 </td>
                                 <td>
                                     <form action="{{action([KlasController::class,'destroy'],[$klas])}}"
-                                        id="d           {{$klas->id}}" method="post">
+                                        id="delete_form_{{$klas->id}}" method="post">
                                         @csrf
                                         @method('delete')
                                         <a onclick="confirmDelete({{$klas->id}})">
