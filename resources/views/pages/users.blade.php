@@ -16,11 +16,11 @@
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="admin" role="tabpanel" aria-labelledby="nav-home-tab">
             {{-- admin stuff here --}}
-            tralala
+            @include('pages.users.admin')
         </div>
         <div class="tab-pane fade" id="studenten" role="tabpanel" aria-labelledby="nav-profile-tab">
             {{-- student stuff here --}}
-            bidnfdfjdf
+            @include('pages.users.student')
         </div>
     </div>
 </div>

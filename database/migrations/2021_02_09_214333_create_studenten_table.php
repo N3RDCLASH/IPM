@@ -18,11 +18,12 @@ class CreateStudentenTable extends Migration
             $table->string('achter_naam');
             $table->string('voor_naam');
             $table->date('geboorte_datum');
-            $table->date('geboorte_plaats');
+            $table->string('geboorte_plaats');
             $table->date('uitgave_datum');
             $table->date('verval_datum');
-            $table->decimal('saldo', $precision = 2, $scale = 2);
-
+            $table->decimal('saldo', $precision = 4, $scale = 2); 
+            $table->timestamps();
+            $table->foreignId('user_id')->nullable()->constrained('users');
         });
     }
 

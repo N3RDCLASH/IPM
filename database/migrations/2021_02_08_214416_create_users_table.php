@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('user_naam')->unique();
             $table->string('password');
+            $table->string('QRpassword')->nullable(); 
             $table->rememberToken();
             $table->datetime('created_at');
             $table->datetime('updated_at');
