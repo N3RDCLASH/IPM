@@ -23,6 +23,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/saldo', [App\Http\Controllers\SaldoController::class, 'index'])->name('saldo');
 
 
+
+//store the save
+Route::post('/student', [App\Http\Controllers\UserController::class,'storeStudent']);
+
+//store the save User
+Route::post('/admin', [App\Http\Controllers\UserController::class,'storeUser']);
+
+
 Route::group(['middleware' => 'auth'], function () {
 
 	Route::resources(
