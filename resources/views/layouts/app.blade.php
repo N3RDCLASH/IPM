@@ -38,7 +38,7 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- CSS Files -->
     <link href="{{ asset('paper') }}/css/bootstrap.min.css" rel="stylesheet" />
     <link href="{{ asset('paper') }}/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
-    
+
     <link href="{{ asset('paper') }}/css/index.css" rel="stylesheet" />
 
 </head>
@@ -76,7 +76,9 @@ The above copyright notice and this permission notice shall be included in all c
     <script src="https://kit.fontawesome.com/b6a8b0b827.js" crossorigin="anonymous"></script>
     {{-- Sweet Alert 2 --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
+    <script
+        src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js">
+    </script>
     @stack('scripts')
 
     @include('layouts.navbars.fixed-plugin-js')

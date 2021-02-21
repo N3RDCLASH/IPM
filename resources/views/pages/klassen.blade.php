@@ -13,7 +13,7 @@ $year = date('Y');
 <div class="content">
     <?php
     use App\Http\Controllers\KlasController;
-    $url= action([KlasController::class,'store']);
+    $url= acti on([KlasController::class,'store']);
 ?>
     <div class="col-md-12">
         <div class="card">

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Klas;
+use App\Models\StudentKlas;
 use Illuminate\Http\Request;
 
-class KlasController extends Controller
+class StudentKlasController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +15,6 @@ class KlasController extends Controller
     public function index()
     {
         //
-        $klassen = Klas::all();
-        return view('pages.klassen')->with(["klassen" => $klassen]);
     }
 
     /**
@@ -27,6 +24,7 @@ class KlasController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -37,60 +35,51 @@ class KlasController extends Controller
      */
     public function store(Request $request)
     {
-        $klas = new Klas();
-        $klas->createKlas($request->only(["klas", "richting_id", "jaar"]));
-        return redirect(route('klassen'));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\StudentKlas  $studentKlas
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(StudentKlas $studentKlas)
     {
         //
-        $klas = Klas::find($id);
-        return view('pages.klassen.klas')->with(['klas' => $klas]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\StudentKlas  $studentKlas
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(StudentKlas $studentKlas)
     {
-        $klas = Klas::find($id);
-        return view('pages.klassen.edit')->with(['klas' => $klas]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\StudentKlas  $studentKlas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, StudentKlas $studentKlas)
     {
-        $klas = new Klas();
-        $klas->updateKlas($request->only(["klas", "richting_id", "jaar"]),$id);
-        return redirect(route('klassen'));
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\StudentKlas  $studentKlas
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(StudentKlas $studentKlas)
     {
-        $klas = new Klas();
-        $klas->deleteKlas($id);
-        return redirect(route('klassen'));
+        //
     }
 }

@@ -68,8 +68,24 @@ $year = date('Y');
                         @endif
                     </table>
                 </div>
+                <div class="row">
+                    <div class="col-sm-8 align-self-center">
+                        <select class="form-control basicAutoSelect" name="simple_select"
+                            placeholder="type to search..." data-url="testdata/test-select-simple.json"
+                            autocomplete="off"></select>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-warning">toevoegen</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+@push('scripts')
+<script>
+    $('.basicAutoSelect').autoComplete();
+</script>
+@endpush
 @endsection
