@@ -55,7 +55,7 @@ $url = action([UserController::class, 'storeUser']);
     </div>
 </div>
 
-<!-- Modal -->
+{{-- <!-- Modal -->
 <div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="adminModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -92,5 +92,4 @@ $url = action([UserController::class, 'storeUser']);
             </div>
         </div>
     </div>
-</div>
-</div>
+</div> --}}

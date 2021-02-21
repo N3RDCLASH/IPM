@@ -14,7 +14,7 @@
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="admin" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="tab-pane fade show active" id="admins" role="tabpanel" aria-labelledby="nav-home-tab">
             {{-- admin stuff here --}}
             @include('pages.users.admin')
         </div>
