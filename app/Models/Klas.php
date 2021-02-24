@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Klas extends Model
 {
     use HasFactory;
+    
     protected $table = 'klassen';
     protected $fillable = ["klas,richting_id,jaar"];
 

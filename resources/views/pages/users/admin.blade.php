@@ -35,17 +35,19 @@ $url = action([UserController::class, 'storeUser']);
                 </thead>
                 <tbody>
                     @foreach ($users as $user)
-                        <tr>
-                            <th scope="row">{{ $user->id }}</th>
-                            <td>{{ $user->user_naam }}</td>
-                            {{-- <td>{{ $user->password }}</td> --}}
-                            <td>{{ $user->created_at }}</td>
-                            <td><a class="btn btn-danger" href="/Delete/{{ $user->id }}">Delete</a></td>
-                            <td><a class="btn btn-success" href="/adminj/Update/{{ $user->id }}">Update</a></td>
-                            <td><a class="btn btn-primary" href="/User/view/{{ $user->id }}">View</a></td>
-                            @csrf
-                            @method('DELETE')
-                        </tr>
+                    @if ($user->hasRole('admin'))
+                    <tr>
+                        <th scope="row">{{ $user->id }}</th>
+                        <td>{{ $user->user_naam }}</td>
+                        {{-- <td>{{ $user->password }}</td> --}}
+                        <td>{{ $user->created_at }}</td>
+                        <td><a class="btn btn-danger" href="/Delete/{{ $user->id }}">Delete</a></td>
+                        <td><a class="btn btn-success" href="/adminj/Update/{{ $user->id }}">Update</a></td>
+                        <td><a class="btn btn-primary" href="/User/view/{{ $user->id }}">View</a></td>
+                        @csrf
+                        @method('DELETE')
+                    </tr>
+                    @endif
                     @endforeach
                 </tbody>
 
@@ -68,28 +70,28 @@ $url = action([UserController::class, 'storeUser']);
             </div>
             <div class="modal-body">
                 <form action="{{ $url }}" method="POST">
-                    @csrf()
-                    <h2>Add admin</h2>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="first">User Name</label>
-                <input type="text" class="form-control" placeholder="" name="username" id="first">
-              </div>
-            </div>
-            <!--  col-md-6   -->
-            <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
+@csrf()
+<h2>Add admin</h2>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="first">User Name</label>
+            <input type="text" class="form-control" placeholder="" name="username" id="first">
+        </div>
+    </div>
+    <!--  col-md-6   -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
                 <label for="last">Password
                 </label>
                 <div class="row">
-                <input type="text" class="form-control" placeholder="" name="password" id="last">
-              </div>
+                    <input type="text" class="form-control" placeholder="" name="password" id="last">
+                </div>
             </div>
-                        <button type="submit" id="serviceSubmitButton" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
+            <button type="submit" id="serviceSubmitButton" class="btn btn-primary">Submit</button>
+            </form>
         </div>
     </div>
+</div>
 </div> --}}

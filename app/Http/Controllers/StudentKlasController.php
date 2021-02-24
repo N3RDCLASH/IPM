@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\StudentKlas;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentKlasController extends Controller
@@ -25,6 +26,7 @@ class StudentKlasController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -36,6 +38,10 @@ class StudentKlasController extends Controller
     public function store(Request $request)
     {
         //
+        $studentklas = new StudentKlas();
+        $studentklas->addStudentToKlas($request->only(["klas_id", "student_id", "school_jaar"]));
+        return redirect(route('klassen'));
+
     }
 
     /**
@@ -81,5 +87,16 @@ class StudentKlasController extends Controller
     public function destroy(StudentKlas $studentKlas)
     {
         //
+    }
+
+    public function getStudentenPerKlas($id)
+    {
+        $studentklas = new StudentKlas();
+        $studenten =[];
+        $data = $studentklas->getStudentenPerKlas($id);
+        foreach ($data as $student) {
+            $studenten []= Student::find($student->id);
+        }
+        return $studenten;
     }
 }

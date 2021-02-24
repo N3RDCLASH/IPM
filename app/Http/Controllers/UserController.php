@@ -15,7 +15,7 @@ class UserController extends Controller
      * @param  \App\Models\User  $model
      * @return \Illuminate\View\View
      */
-    public function index(User $model)
+    public function index()
     {
         $user = User::all();
         $studenten = Student::all();
@@ -97,12 +97,12 @@ class UserController extends Controller
     public function storeStudent()
     {
         $user = new User();
-        $user->createStudent(request()->only(["Vname","Aname","password"]));
+        $user->createStudent(request()->only(["Vname", "Aname", "password"]));
 
-    
+
         $student = new Student();
         $student->CreateStudent($user->id);
-        return $this->index;
+        return $this->index();
     }
 
     //save
@@ -116,11 +116,17 @@ class UserController extends Controller
     // save user
     public function storeUser()
     {
-     
+
         $user = new User();
-        $user->createAdmin(request()->only(["username","password"]));
+        $user->createAdmin(request()->only(["username", "password"]));
         $user->save();
 
-         return redirect('/users')->with('mssg', 'Record has been Created succesfully');
+        return redirect('/users')->with('mssg', 'Record has been Created succesfully');
+    }
+
+    public function getAllStudents()
+    {
+        $students = Student::all();
+        return ($students);
     }
 }

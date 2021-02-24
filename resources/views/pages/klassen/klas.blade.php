@@ -2,6 +2,7 @@
 $user = Auth::user();
 
 $year = date('Y');
+use App\Http\Controllers\StudentKlasController;
 ?>
 
 @extends('layouts.app', [
@@ -48,15 +49,13 @@ $year = date('Y');
                     <table class="table">
                         <thead class=" text-primary">
                             <th></th>
-                            <th></th>
                         </thead>
-                        @if(""!=="")
+                        @if($studenten !=="")
                         <tbody>
 
-                            @foreach ($klas->getOriginal() as $key => $value)
+                            @foreach ($studenten as $student)
                             <tr>
-                                <td><b>{{$key}}</b></td>
-                                <td>{{$value}}</td>
+                                <td><b>{{$student->voor_naam ." ".$student->achter_naam}}</b></td>
                             </tr>
                             @endforeach
 
@@ -68,16 +67,21 @@ $year = date('Y');
                         @endif
                     </table>
                 </div>
-                <div class="row">
-                    <div class="col-sm-8 align-self-center">
-                        <select class="form-control basicAutoSelect" name="simple_select"
-                            placeholder="type to search..." data-url="testdata/test-select-simple.json"
-                            autocomplete="off"></select>
+                <form action="{{action([StudentKlasController::class,'store'])}}" method="POST">
+                    <div class="row">
+                        <div class="col-sm-8 align-self-center">
+                            @csrf()
+                            <select class="form-control basicAutoSelect" name="student_id"
+                                placeholder="type to search..." data-url="http://ipm.me/api/student/all"
+                                autocomplete="off"></select>
+                            <input type="hidden" name="klas_id" value="{{$klas->id}}">
+                            <input type="hidden" name="school_jaar" value="{{$klas->jaar}}">
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-warning">toevoegen</button>
+                        </div>
                     </div>
-                    <div class="col-sm-4">
-                        <button type="button" class="btn btn-warning">toevoegen</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -85,7 +89,14 @@ $year = date('Y');
 
 @push('scripts')
 <script>
-    $('.basicAutoSelect').autoComplete();
+    $('.basicAutoSelect').autoComplete({
+formatResult:({id,achter_naam,voor_naam})=>{
+return {value:id, text:`${achter_naam} ${voor_naam}`}
+},
+resolverSettings: {
+url: 'http://ipm.me/api/student/all'
+},
+minLength:2,});
 </script>
 @endpush
 @endsection

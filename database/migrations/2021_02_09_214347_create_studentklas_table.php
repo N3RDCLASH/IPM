@@ -18,6 +18,8 @@ class CreateStudentklasTable extends Migration
             $table->integer('student_id');
             $table->integer('klas_id');
             $table->string('school_jaar');
+            $table->datetime('created_at');
+            $table->datetime('updated_at');
         });
     }
 

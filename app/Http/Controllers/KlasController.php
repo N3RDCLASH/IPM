@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Klas;
 use Illuminate\Http\Request;
+use App\Http\Controllers\StudentKlasController;
+use App\Models\StudentKlas;
 
 class KlasController extends Controller
 {
@@ -52,7 +54,9 @@ class KlasController extends Controller
     {
         //
         $klas = Klas::find($id);
-        return view('pages.klassen.klas')->with(['klas' => $klas]);
+        $studentklas = new StudentKlasController();
+        $studenten = $studentklas->getStudentenPerKlas($id);
+        return view('pages.klassen.klas')->with(['klas' => $klas, "studenten" => $studenten]);
     }
 
     /**
@@ -77,7 +81,7 @@ class KlasController extends Controller
     public function update(Request $request, $id)
     {
         $klas = new Klas();
-        $klas->updateKlas($request->only(["klas", "richting_id", "jaar"]),$id);
+        $klas->updateKlas($request->only(["klas", "richting_id", "jaar"]), $id);
         return redirect(route('klassen'));
     }
 
