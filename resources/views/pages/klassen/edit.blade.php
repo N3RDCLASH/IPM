@@ -54,12 +54,7 @@ $year = date('Y');
                     @endfor
             </select>
         </div>
-        {{-- <div class="form-group">
-                            <label for="klasInputJaar">Klas Jaar</label>
-                            <input type="date" class="form-control-file" id="klasInputJaar" name="klas_jaar">
-                        </div> --}}
-
-
+        
         <button type="submit" id="serviceSubmitButton" class="btn btn-primary">Submit</button>
     </form>
 </div>
