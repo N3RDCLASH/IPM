@@ -25,31 +25,34 @@ Route::get('/saldo', [App\Http\Controllers\SaldoController::class, 'index'])->na
 
 
 //store the save
-Route::post('/student', [App\Http\Controllers\UserController::class,'storeStudent']);
+Route::post('/student', [App\Http\Controllers\UserController::class, 'storeStudent']);
 
 //store the save User
-Route::post('/admin', [App\Http\Controllers\UserController::class,'storeUser']);
+Route::post('/admin', [App\Http\Controllers\UserController::class, 'storeUser']);
 
 
 Route::group(['middleware' => 'auth'], function () {
 
-	Route::resources(
-		[
-			'user' => App\Http\Controllers\UserController::class,
-			'service' => App\Http\Controllers\ServicesController::class
-		],
-		// [
-		// 	"names" => [
-		// 		'users' => 'user.index',
-		// 		'services' => "service.index",
-		// 	]
-		// ]
-	);
+	// Route::resources(
+	// 	[
+	// 		'user' => App\Http\Controllers\UserController::class,
+	// 		'service' => App\Http\Controllers\ServicesController::class
+	// 	],
+	// 	// [
+	// 	// 	"names" => [
+	// 	// 		'users' => 'user.index',
+	// 	// 		'services' => "service.index",
+	// 	// 	]
+	// 	// ]
+	// );
 
 	Route::resource('services', 'App\Http\Controllers\ServicesController')->name('index', 'services');
 	Route::resource('users', 'App\Http\Controllers\UserController')->name('index', 'users');
 	Route::resource('klassen', 'App\Http\Controllers\KlasController')->name('index', 'klassen');
+	Route::resource('richtingen', 'App\Http\Controllers\RichtingController')->name('index', 'richtingen');
 	Route::resource('studentklas', 'App\Http\Controllers\StudentKlasController');
+
+
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);

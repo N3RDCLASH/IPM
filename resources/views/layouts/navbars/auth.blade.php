@@ -30,6 +30,12 @@
                     <p>{{ __('Klassen') }}</p>
                 </a>
             </li>
+            <li class="{{ $elementActive == 'richtingen' ? 'active' : '' }}">
+                <a href="{{ route('richtingen') }}">
+                    <i class="nc-icon nc-tag-content"></i>
+                    <p>{{ __('Richtingen') }}</p>
+                </a>
+            </li>
             <li class="{{ $elementActive == 'services' ? 'active' : '' }}">
                 <a href="{{ route('services') }}">
                     <i class="nc-icon nc-bank"></i>

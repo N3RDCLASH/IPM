@@ -107,11 +107,9 @@ $year = date('Y');
                         <div class="form-group">
                             <label for="klasInputRichting">Klas Richting</label>
                             <select class="form-control" id="klasInputRichting" name="richting_id">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                @foreach ($richtingen as $richting)
+                                <option value="{{$richting->id}}">{{$richting->richting_naam}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">

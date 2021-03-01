@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Klas;
 use Illuminate\Http\Request;
 use App\Http\Controllers\StudentKlasController;
+use App\Models\Richting;
 use App\Models\StudentKlas;
 
 class KlasController extends Controller
@@ -19,7 +20,8 @@ class KlasController extends Controller
     {
         //
         $klassen = Klas::all();
-        return view('pages.klassen')->with(["klassen" => $klassen]);
+        $richtingen = Richting::all();
+        return view('pages.klassen')->with(["klassen" => $klassen, 'richtingen' => $richtingen]);
     }
 
     /**
