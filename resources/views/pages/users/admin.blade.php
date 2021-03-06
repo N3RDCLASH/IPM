@@ -9,7 +9,7 @@ $url = action([UserController::class, 'storeUser']);
 <div class="container table-responsive py-5">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title"> Klassen</h4>
+            <h4 class="card-title"> Administratie</h4>
         </div>
         <div class="card-body">
             <table class="table table-bordered table-hover">
@@ -41,9 +41,9 @@ $url = action([UserController::class, 'storeUser']);
                         <td>{{ $user->user_naam }}</td>
                         {{-- <td>{{ $user->password }}</td> --}}
                         <td>{{ $user->created_at }}</td>
-                        <td><a class="btn btn-danger" href="/Delete/{{ $user->id }}">Delete</a></td>
-                        <td><a class="btn btn-success" href="/adminj/Update/{{ $user->id }}">Update</a></td>
-                        <td><a class="btn btn-primary" href="/User/view/{{ $user->id }}">View</a></td>
+                        <td><a class="btn btn-danger" href="user/Delete/{{ $user->id }}">Delete</a></td>
+                        <td><a class="btn btn-success" href="user/Update/{{ $user->id }}">Update</a></td>
+                        <td><a class="btn btn-primary" href="user/view/{{ $user->id }}">View</a></td>
                         @csrf
                         @method('DELETE')
                     </tr>

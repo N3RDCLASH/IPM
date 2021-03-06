@@ -6,7 +6,7 @@ $url = action([UserController::class, 'storeStudent']);
 <div class="container table-responsive py-5">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title"> Klassen</h4>
+            <h4 class="card-title"> Studenten</h4>
         </div>
         <div class="card-body">
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#studentModal"><i
@@ -76,7 +76,7 @@ $url = action([UserController::class, 'storeStudent']);
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="last">Achter Name</label>
+                                <label for="last">Achter Naam</label>
                                 <input type="text" class="form-control" name="Aname" placeholder="" id="">
                             </div>
                         </div>

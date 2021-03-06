@@ -28,7 +28,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect('/Users')->with('mssg', 'Record has been deleted succesfully');
+        return $this->index();
     }
 
 
@@ -38,15 +38,15 @@ class UserController extends Controller
         $student = Student::findOrFail($id);
         $student->delete();
 
-        return redirect('/Users')->with('mssg', 'Record has been deleted succesfully'); //moet nog in de user table geplaatst worden
+        return $this->index()->with('mssg', 'Record has been deleted succesfully'); //moet nog in de user table geplaatst worden
     }
-
+    
     public function showStudent($id)
     {
 
         $studentgegevens = Student::findOrFail($id);
 
-        return view('St_details', ['student' => $studentgegevens]);
+        return view('pages.St_details', ['student' => $studentgegevens]);
     }
 
 
@@ -55,14 +55,14 @@ class UserController extends Controller
     {
         $usergegevens = User::findOrFail($id);
 
-        return view('Us_details', ['Userid' => $usergegevens]);
+        return view('pages.Us_details', ['Userid' => $usergegevens]);
     }
 
     public function updatest($id)
     {
         $student = Student::findOrFail($id);
 
-        return view('Updatest', ['Updateidst' => $student]);
+        return view('pages.Updatest', ['Updateidst' => $student]);
     }
 
     // go to update
@@ -70,14 +70,14 @@ class UserController extends Controller
     {
         $usergegevens = User::findOrFail($id);
 
-        return view('updateus', ['Updateid' => $usergegevens]);
+        return view('pages.updateus', ['Updateid' => $usergegevens]);
     }
     //save update
     public function update_st(Request $req)
     {
         $student = new Student();
         $student->UpdateStudent($req);
-        return redirect('/Users')->with('mssg', 'Record has been Updated succesfully');
+        return view('pages.users')->with('mssg', 'Record has been Updated succesfully');
     }
 
     //save update user
@@ -88,7 +88,7 @@ class UserController extends Controller
         $user->password = $req->pass;
         $user->save();
 
-        return redirect('/Users')->with('mssg', 'Record has been Updated succesfully');
+        return redirect('pages.users')->with('mssg', 'Record has been Updated succesfully');
     }
 
 
