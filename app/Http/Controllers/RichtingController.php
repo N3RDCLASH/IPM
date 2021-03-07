@@ -78,7 +78,6 @@ class RichtingController extends Controller
     public function update(Request $request, Richting $richting, $id)
     {
         //
-        $richting->find($id);
         $richting->updateRichting($request->only(["richting_naam"]), $id);
         return redirect()->action([RichtingController::class, "edit"], $id);
     }

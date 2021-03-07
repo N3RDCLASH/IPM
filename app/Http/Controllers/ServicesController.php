@@ -49,10 +49,9 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service, $id)
+    public function show(Service $service)
     {
-        $data = $service->$id;
-        return view('pages.services.admin')->with(['service' => $data]);
+        return view('pages.services.service')->with(['service' => $service]);
     }
 
     /**
@@ -61,10 +60,9 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service, $id)
+    public function edit(Service $service)
     {
-        $data = $service->find($id);
-        return view('pages.services.edit')->with(['service' => $data]);
+        return view('pages.services.edit')->with(['service' => $service]);
     }
 
     /**
@@ -75,12 +73,11 @@ class ServicesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, Service $service, $id)
+    public function update(Request $request, Service $service)
     {
         //
-        $service->find($id);
-        $service->updateService($request->only(["service_naam", "service_beschrijving", "service_document"]), $id);
-        return redirect()->action([ServicesController::class, "edit"], $id);
+        $service->updateService($request->only(["service_naam", "service_beschrijving", "service_document"]), $service->id);
+        return redirect()->action([ServicesController::class, "edit"], $service->id);
     }
 
     /**
@@ -89,9 +86,9 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service, $id)
+    public function destroy(Service $service)
     {
-        $service->deleteService($id);
+        $service->deleteService($service->id);
         return redirect()->action([ServicesController::class, 'index']);
     }
 
