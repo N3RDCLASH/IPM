@@ -49,9 +49,10 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Service $service, $id)
     {
-        //
+        $data = $service->$id;
+        return view('pages.services.admin')->with(['service' => $data]);
     }
 
     /**
@@ -60,9 +61,10 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Service $service, $id)
     {
-        //
+        $data = $service->find($id);
+        return view('pages.services.edit')->with(['service' => $data]);
     }
 
     /**
@@ -72,9 +74,13 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+    public function update(Request $request, Service $service, $id)
     {
         //
+        $service->find($id);
+        $service->updateService($request->only(["service_naam", "service_beschrijving", "service_document"]), $id);
+        return redirect()->action([ServicesController::class, "edit"], $id);
     }
 
     /**
@@ -83,9 +89,10 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Service $service, $id)
     {
-        //
+        $service->deleteService($id);
+        return redirect()->action([ServicesController::class, 'index']);
     }
 
     public function fileUpload(Request $req)
