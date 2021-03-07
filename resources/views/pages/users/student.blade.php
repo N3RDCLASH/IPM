@@ -108,7 +108,7 @@ $url = action([UserController::class, 'storeStudent']);
                             <div class="form-group">
                                 <label for="phone">Uitgave Datum</label>
                                 <input type="date" class="form-control" id="" placeholder="" name="Uitgave">
-                            </div>f
+                            </div>
                         </div>
                         <!--  col-md-6   -->
 

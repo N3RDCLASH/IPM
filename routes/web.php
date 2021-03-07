@@ -51,20 +51,6 @@ Route::get('/Student/view/{id}',[App\Http\Controllers\UserController::class,'sho
 
 
 Route::group(['middleware' => 'auth'], function () {
-
-	// Route::resources(
-	// 	[
-	// 		'user' => App\Http\Controllers\UserController::class,
-	// 		'service' => App\Http\Controllers\ServicesController::class
-	// 	],
-	// 	// [
-	// 	// 	"names" => [
-	// 	// 		'users' => 'user.index',
-	// 	// 		'services' => "service.index",
-	// 	// 	]
-	// 	// ]
-	// );
-
 	Route::resource('services', 'App\Http\Controllers\ServicesController')->name('index', 'services');
 	Route::resource('users', 'App\Http\Controllers\UserController')->name('index', 'users');
 	Route::resource('klassen', 'App\Http\Controllers\KlasController')->name('index', 'klassen');
@@ -76,7 +62,3 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
-
-// Route::group(['middleware' => 'auth'], function () {
-// 	// Route::get('{page}', ['as' => 'page.index', 'uses' => 'App\Http\Controllers\PageController@index'],);
-// });

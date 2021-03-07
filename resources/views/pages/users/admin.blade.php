@@ -57,7 +57,7 @@ $url = action([UserController::class, 'storeUser']);
     </div>
 </div>
 
-{{-- <!-- Modal -->
+<!-- Modal -->
 <div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="adminModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -70,28 +70,29 @@ $url = action([UserController::class, 'storeUser']);
             </div>
             <div class="modal-body">
                 <form action="{{ $url }}" method="POST">
-@csrf()
-<h2>Add admin</h2>
-<div class="row">
-    <div class="col-md-6">
-        <div class="form-group">
-            <label for="first">User Name</label>
-            <input type="text" class="form-control" placeholder="" name="username" id="first">
-        </div>
-    </div>
-    <!--  col-md-6   -->
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="last">Password
-                </label>
-                <div class="row">
-                    <input type="text" class="form-control" placeholder="" name="password" id="last">
-                </div>
+                    @csrf()
+                    <h2>Add admin</h2>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="first">User Name</label>
+                                <input type="text" class="form-control" placeholder="" name="username" id="first">
+                            </div>
+                        </div>
+                    </div>
+                    <!--  col-md-6   -->
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="last">Password
+                                </label>
+                                <input type="text" class="form-control" placeholder="" name="password" id="last">
+                            </div>
+                            <button type="submit" id="serviceSubmitButton" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
             </div>
-            <button type="submit" id="serviceSubmitButton" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
 </div>
-</div> --}}

@@ -35,16 +35,16 @@ $user = Auth::user();
                             <tr data-id="">
                                 <td>{{$richting->id}}</td>
                                 <td>{{$richting->richting_naam}}</td>
-                                <td><a href="{{action([richtingController::class,'show'],[$richting])}}">
+                                <td><a href="{{action([RichtingController::class,'show'],[$richting])}}">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                 </td>
-                                <td><a href="{{action([richtingController::class,'edit'],[$richting])}}">
+                                <td><a href="{{action([RichtingController::class,'edit'],[$richting])}}">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <form action="{{action([richtingController::class,'destroy'],[$richting])}}"
+                                    <form action="{{action([RichtingController::class,'destroy'],[$richting])}}"
                                         id="delete_form_{{$richting->id}}" method="post">
                                         @csrf
                                         @method('delete')
