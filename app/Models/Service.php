@@ -9,7 +9,6 @@ class Service extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
         'service_naam',
         'service_beschrijving',
@@ -30,12 +29,21 @@ class Service extends Model
     {
         return $this::select()->where('service_id', $id)->get();
     }
+
     public function updateService($data, $id)
     {
-        return $this::where('service_id', $id)->update(['service_naam' => $data['service_naam']]);
+        // return $this::where('service_id', $id)->update(['service_naam' => $data['service_naam']]);
+        $service = $this->find($id);
+        $service->richting_naam = $data['service_naam'];
+        $service->service_beschrijving = $data['service_beschrijving'];
+        $service->service_document = $data['service_document'];
+        $service->save();
     }
+
     public function deleteService($id)
     {
-        return $this::where('service_id', $id)->delete();
+        // return $this::where('service_id', $id)->delete();
+        $service = $this->find($id);
+        $service->delete();
     }
 }

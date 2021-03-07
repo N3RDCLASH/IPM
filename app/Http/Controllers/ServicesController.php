@@ -73,11 +73,10 @@ class ServicesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, Service $service)
+    public function update(Request $request, Service $service, $id)
     {
-        //
-        $service->updateService($request->only(["service_naam", "service_beschrijving", "service_document"]), $service->id);
-        return redirect()->action([ServicesController::class, "edit"], $service->id);
+        $service->updateService($request->only(["service_naam", "service_beschrijving", "service_document"]),$service->$id);
+        return redirect()->action([ServicesController::class, "edit"], $service->$id);
     }
 
     /**
@@ -86,11 +85,25 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+
+    // public function destroy(Service $service, $id)
+    // {
+    //     $service ->deleteService($id);
+    //     return redirect()->action([ServicesController::class, 'index']);
+    // }
+
+    public function destroy(Service $service, $id)
     {
-        $service->deleteService($service->id);
+        $service->deleteService($id);
         return redirect()->action([ServicesController::class, 'index']);
+        // return view('pages.services.service')->with(['service' => $service]);
     }
+
+    // public function destroy(Richting $richting, $id)
+    // {
+    //     $richting->deleteRichting($id);
+    //     return redirect()->action([RichtingController::class, 'index']);
+    // }
 
     public function fileUpload(Request $req)
     {

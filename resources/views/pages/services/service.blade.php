@@ -1,10 +1,10 @@
-<?php 
+<?php
 $user = Auth::user();
 ?>
 
 @extends('layouts.app', [
 'class' => '',
-'elementActive' => 'serviceen'
+'elementActive' => 'services'
 ])
 
 @section('content')
