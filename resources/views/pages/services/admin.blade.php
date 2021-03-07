@@ -26,16 +26,21 @@
                             <td>{{$service->service_naam}}</td>
                             <td>{{$service->service_beschrijving}}</td>
                             <td>{{$service->service_document}}</td>
-                            <td><a href="/services/{{$service->service_id}}">
+                            <td>
+                                <a href="{{action([ServicesController::class,'show'],[$service])}}">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </td>
+                            <td><a href="{{action([ServicesController::class,'edit'],[$service])}}">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </td>
                             <td>
                                 <form action="{{action([ServicesController::class,'destroy'],[$service])}}"
-                                    id="delete_form_{{$service->service_id}}" method="post">
+                                    id="delete_form_{{$service->id}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a onclick="confirmDelete({{$service->service_id}})">
+                                    <a onclick="confirmDelete({{$service->id}})">
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
                                 </form>
