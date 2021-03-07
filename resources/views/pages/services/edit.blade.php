@@ -40,10 +40,11 @@
                             placeholder="Vul service beschrijving in...">
                     </div>
                     <div class="form-group">
+                        <label for="currentfile">Huidig ​​bestand:{{$service->service_document}}</label>
                         <label for="serviceInputDocument">Service Document</label>
-                        <input type="file" class="form-control-file" id="serviceInputDocument" name="service_document"
-                        value="{{$service->service_document}}">
+                        <input type="file" class="form-control-file" id="serviceInputDocument" name="service_document">
                     </div>
+
                     <button type="submit" id="serviceSubmitButton" class="btn btn-primary">Submit</button>
                 </form>
             </div>
