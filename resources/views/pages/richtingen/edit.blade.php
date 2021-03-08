@@ -13,7 +13,8 @@
             <div class="card-body">
                 <?php
                     use App\Http\Controllers\RichtingController;
-                    $url= action([RichtingController::class,'update'],$richting->id);
+                    $url= action([RichtingController::class,'update'],[$richting]);
+                    // $url= "";
                 ?>
                 <form action="{{$url}}" method="POST">
                     @csrf()
@@ -37,12 +38,12 @@
                     <button type="submit" id="serviceSubmitButton" class="btn btn-primary">Submit</button>
                 </form>
             </div>
+        </div>
     </div>
-</div>
-@endsection
+    @endsection
 
-@push('scripts')
-<script>
+    @push('scripts')
+    <script>
 
-</script>
-@endpush
+    </script>
+    @endpush

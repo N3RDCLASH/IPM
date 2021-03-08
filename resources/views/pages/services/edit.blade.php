@@ -31,29 +31,35 @@
                     <div class="form-group">
                         <label for="serviceInputNaam">Service Naam</label>
                         <input type="text" class="form-control" id="serviceInputNaam" name="service_naam"
-                        value="{{$service->service_naam}}" aria-describedby="naamHelp" placeholder="Vul service naam in...">
+                            value="{{$service->service_naam}}" aria-describedby="naamHelp"
+                            placeholder="Vul service naam in...">
                     </div>
                     <div class="form-group">
                         <label for="serviceInputBeschrijving">Service Beschrijving</label>
-                        <input type="text" class="form-control" id="serviceInputBeschrijving" value="{{$service->service_beschrijving}}"
-                            name="service_beschrijving" aria-describedby="beschrijvingHelp"
-                            placeholder="Vul service beschrijving in...">
+                        <input type="text" class="form-control" id="serviceInputBeschrijving"
+                            value="{{$service->service_beschrijving}}" name="service_beschrijving"
+                            aria-describedby="beschrijvingHelp" placeholder="Vul service beschrijving in...">
                     </div>
                     <div class="form-group">
                         <label for="currentfile">Huidig ​​bestand:{{$service->service_document}}</label>
                         <label for="serviceInputDocument">Service Document</label>
+<<<<<<< HEAD
                         <input type="file" class="form-control-file" id="serviceInputDocument" name="service_document">
+=======
+                        <input type="file" class="form-control-file" id="serviceInputDocument" name="service_document"
+                            value="{{$service->service_document}}">
+>>>>>>> ef2b40e3a75eb421a1439a89cf5e076c88a08558
                     </div>
 
                     <button type="submit" id="serviceSubmitButton" class="btn btn-primary">Submit</button>
                 </form>
             </div>
+        </div>
     </div>
-</div>
-@endsection
+    @endsection
 
-@push('scripts')
-<script>
+    @push('scripts')
+    <script>
 
-</script>
-@endpush
+    </script>
+    @endpush

@@ -11,6 +11,10 @@ class Richting extends Model
     protected $table = "richtingen";
     public $timestamps = false;
 
+    protected $fillable = [
+        'richting_naam',
+    ];
+
     public function createRichting($data)
     {
         $this->richting_naam = $data['richting_naam'];

@@ -49,48 +49,46 @@ class RichtingController extends Controller
      * @param  \App\Models\Richting  $richting
      * @return \Illuminate\Http\Response
      */
-    public function show(Richting $richting, $id)
+    public function show(Richting $richtingen)
     {
-        $data = $richting->find($id);
-        return view('pages.richtingen.richting')->with(['richting' => $data]);
+        return view('pages.richtingen.richting')->with(['richting' => $richtingen]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Richting  $richting
+     * @param  \App\Models\Richting  $richtingen
      * @return \Illuminate\Http\Response
      */
-    public function edit(Richting $richting, $id)
+    public function edit(Richting $richtingen)
     {
         //
-        $data = $richting->find($id);
-        return view('pages.richtingen.edit')->with(['richting' => $data]);
+        return view('pages.richtingen.edit')->with(['richting' => $richtingen]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Richting  $richting
+     * @param  \App\Models\Richting  $richtingen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Richting $richting, $id)
+    public function update(Request $request, Richting $richtingen)
     {
         //
-        $richting->updateRichting($request->only(["richting_naam"]), $id);
-        return redirect()->action([RichtingController::class, "edit"], $id);
+        $richtingen->updateRichting($request->only(["richting_naam"]), $richtingen->id);
+        return redirect()->action([RichtingController::class, "edit"], $richtingen->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Richting  $richting
+     * @param  \App\Models\Richting  $richtingen
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Richting $richting, $id)
+    public function destroy(Richting $richtingen)
     {
-        $richting->deleteRichting($id);
+        $richtingen->deleteRichting($richtingen->id);
         return redirect()->action([RichtingController::class, 'index']);
     }
 }
