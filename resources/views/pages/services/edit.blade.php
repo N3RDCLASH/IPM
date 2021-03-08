@@ -30,14 +30,13 @@ $year = date('Y');
         @endif
         <div class="form-group">
             <label for="serviceInputNaam">Service Naam</label>
-            <input type="text" class="form-control" id="serviceInputNaam" name="service_naam"
-                aria-describedby="naamHelp" placeholder="Vul service naam in...">
+            <input type="text" class="form-control" value={{$service->service_naam}} id="serviceInputNaam"
+                name="service_naam" aria-describedby="naamHelp" placeholder="Vul service naam in...">
         </div>
         <div class="form-group">
             <label for="serviceInputBeschrijving">Service Beschrijving</label>
-            <input type="text" class="form-control" id="serviceInputBeschrijving"
-                name="service_beschrijving" aria-describedby="beschrijvingHelp"
-                placeholder="Vul service beschrijving in...">
+            <input type="text" class="form-control" id="serviceInputBeschrijving" name="service_beschrijving"
+                aria-describedby="beschrijvingHelp" placeholder="Vul service beschrijving in...">
         </div>
         <div class="form-group">
             <label for="serviceInputDocument">Service Document</label>

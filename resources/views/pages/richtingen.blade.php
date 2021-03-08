@@ -35,7 +35,7 @@ $user = Auth::user();
                             <tr data-id="">
                                 <td>{{$richting->id}}</td>
                                 <td>{{$richting->richting_naam}}</td>
-                                <td><a href="{{action([RichtingController::class,'show'],[$richting])}}">
+                                <td><a href="{{action([RichtingController::class,'show'],[$richting->id])}}">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                 </td>

@@ -11,7 +11,7 @@ $user = Auth::user();
 <div class="content">
     <?php
     use App\Http\Controllers\ServicesController;
-    $url= action([ServicesController::class,'store']);
+    $url= action([ServiceController::class,'store']);
 ?>
     <div class="col-md-12">
         <div class="card">
