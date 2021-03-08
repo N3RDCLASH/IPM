@@ -43,12 +43,7 @@
                     <div class="form-group">
                         <label for="currentfile">Huidig ​​bestand:{{$service->service_document}}</label>
                         <label for="serviceInputDocument">Service Document</label>
-<<<<<<< HEAD
                         <input type="file" class="form-control-file" id="serviceInputDocument" name="service_document">
-=======
-                        <input type="file" class="form-control-file" id="serviceInputDocument" name="service_document"
-                            value="{{$service->service_document}}">
->>>>>>> ef2b40e3a75eb421a1439a89cf5e076c88a08558
                     </div>
 
                     <button type="submit" id="serviceSubmitButton" class="btn btn-primary">Submit</button>
