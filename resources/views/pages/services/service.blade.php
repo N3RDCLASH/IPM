@@ -1,17 +1,17 @@
-<?php 
+<?php
 $user = Auth::user();
 ?>
 
 @extends('layouts.app', [
 'class' => '',
-'elementActive' => 'serviceen'
+'elementActive' => 'services'
 ])
 
 @section('content')
 <div class="content">
     <?php
     use App\Http\Controllers\ServicesController;
-    $url= action([ServiceController::class,'store']);
+    $url= action([ServicesController::class,'store']);
 ?>
     <div class="col-md-12">
         <div class="card">
