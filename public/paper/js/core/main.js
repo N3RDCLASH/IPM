@@ -1,3 +1,15 @@
+axios.defaults.withCredentials = true;
+
+const checkFullPageBackgroundImage = () => {
+    $page = $('.full-page');
+    image_src = $page.data('image');
+
+    if (image_src !== undefined) {
+        image_container = '<div class="full-page-background" style="background-image: url(' + image_src + ') "/>';
+        $page.append(image_container);
+    }
+}
+
 const confirmDelete = (id) => {
     console.log(id)
     Swal.fire({

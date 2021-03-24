@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -39,6 +43,17 @@ class LoginController extends Controller
     }
 
     public function username()
+    {
+        return 'user_naam';
+    }
+    public function pinLogin(Request $request)
+    {
+        $user = User::where("pincode", $request->pincode)->first();
+        ($user ? Auth::guard('web')->login($user) : false);
+
+        return (Auth::user() ? json_encode(["login_success" => true, "user"=>Auth::user()]) : json_encode(["login_succes" => false]));
+    }
+    public function qrLogin()
     {
         return 'user_naam';
     }

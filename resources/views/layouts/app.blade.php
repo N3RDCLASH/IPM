@@ -38,8 +38,11 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- CSS Files -->
     <link href="{{ asset('paper') }}/css/bootstrap.min.css" rel="stylesheet" />
     <link href="{{ asset('paper') }}/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
 
     <link href="{{ asset('paper') }}/css/index.css" rel="stylesheet" />
+    @stack('head')
 
 </head>
 
@@ -53,13 +56,13 @@ The above copyright notice and this permission notice shall be included in all c
     @guest
     @include('layouts.page_templates.guest')
     @endguest
-
     <script src="{{ asset('paper') }}/js/core/main.js"></script>
     <!--   Core JS Files   -->
     <script src="{{ asset('paper') }}/js/core/jquery.min.js"></script>
     <script src="{{ asset('paper') }}/js/core/popper.min.js"></script>
     <script src="{{ asset('paper') }}/js/core/bootstrap.min.js"></script>
     <script src="{{ asset('paper') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="{{ asset('paper') }}/js/axios/dist/axios.min.js"></script>
     <!--  Google Maps Plugin    -->
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> --}}
     <!-- Chart JS -->
@@ -69,7 +72,7 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('paper') }}/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
     <!-- Sharrre libray -->
-    <script src="{{asset('paper')}}/demo/jquery.sharrre.js"></script>
+    {{-- <script src="{{asset('paper')}}/demo/jquery.sharrre.js"></script> --}}
     {{--  Fontawesome Icons--}}
     <script src="https://kit.fontawesome.com/b6a8b0b827.js" crossorigin="anonymous"></script>
     {{-- Sweet Alert 2 --}}
@@ -77,9 +80,8 @@ The above copyright notice and this permission notice shall be included in all c
     <script
         src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js">
     </script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     @stack('scripts')
-
-    @include('layouts.navbars.fixed-plugin-js')
 </body>
 
 </html>

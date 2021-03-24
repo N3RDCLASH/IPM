@@ -15,8 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::group(['middelware' => 'auth:sanctum'], function () {
+    Route::post('/login/pin', [App\Http\Controllers\Auth\LoginController::class, "pinLogin"]);
+});
 Route::get('/student/all', [App\Http\Controllers\UserController::class, "getAllStudents"]);

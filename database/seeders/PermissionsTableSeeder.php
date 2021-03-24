@@ -45,8 +45,9 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
          User::find(1)->assignRole($admin);
-
-        $student= Role::create(['name' => 'student']);
+         
+         $student= Role::create(['name' => 'student']);
+         User::find(2)->assignRole($student);
         // $permission = Permission::create(['name' => 'edit services']);
 
     }

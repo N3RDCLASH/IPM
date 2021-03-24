@@ -1,7 +1,11 @@
-<div class="col-md-8 text-center">
+<div class="col-md-8 text-center" >
     <form class="col-md-12" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+            <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+        </div>
         <div class="card">
             <div class="card-header">
                 <h5 class="title">{{ __('Edit Profile') }}</h5>
