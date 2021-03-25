@@ -260,10 +260,10 @@ $user = Auth::user();
 <script type="text/javascript" src="{{ URL::asset('/paper/js/plugins/html2canvas.min.js') }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded',()=>{
-    var typeNumber = 4;
-    var errorCorrectionLevel = 'H';
+    var typeNumber = 6;
+    var errorCorrectionLevel = 'Q';
     var qr = qrcode(typeNumber, errorCorrectionLevel);
-    qr.addData('{{$student->voor_naam.$user->pincode}}');
+    qr.addData('{{$user->QRpassword}}');
     qr.make();
     document.getElementById('placeHolder').innerHTML = qr.createSvgTag({
         scalable:true

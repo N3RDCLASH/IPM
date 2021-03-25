@@ -17,10 +17,35 @@
 <script type="text/javascript" src="{{ URL::asset('/paper/js/plugins/instascan.min.js') }}"></script>
 
 <script type="text/javascript">
-    let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+    let scanner = new Instascan.Scanner({ video: document.getElementById('preview'),scanPeriod: 4});
     const initializeScanner = ()=>{
     scanner.addListener('scan', function (content) {
-        console.log(content);
+        axios.get('/sanctum/csrf-cookie')
+        .then(
+        axios.post('api/login/qr',{
+        qrcode:content
+        })
+        .then(({data})=>{
+        console.log(data)
+        if (data.login_success){
+        Toast.fire({
+        icon: 'success',
+        title: 'Signed in successfully'
+        }).then(()=>{
+        clearInputs()
+        window.location= `/home`
+        }
+        )
+        }
+        else
+        {
+        Toast.fire({
+        icon: 'error',
+        title: 'Sign in failed'
+        })
+        }
+        })
+        )
     });
     Instascan.Camera.getCameras().then(function (cameras) {
     if (cameras.length > 0) {

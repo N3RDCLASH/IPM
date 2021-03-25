@@ -22,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'auth:sanctum'], function () {
 });
 Route::post('/login/pin', [App\Http\Controllers\Auth\LoginController::class, "pinLogin"]);
+Route::post('/login/qr', [App\Http\Controllers\Auth\LoginController::class, "qrLogin"]);
 Route::get('/student/all', [App\Http\Controllers\UserController::class, "getAllStudents"]);

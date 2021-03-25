@@ -1,5 +1,5 @@
 @push('head')
-<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+<link href="{{URL::asset('/paper/css/tailwind.min.css')}}" rel="stylesheet">
 @endpush
 
 <div id="pin-section" style="display: none">
