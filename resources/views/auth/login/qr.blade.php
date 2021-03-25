@@ -28,7 +28,7 @@
         .then(({data})=>{
         console.log(data)
         if (data.login_success){
-        Toast.fire({
+        return Toast.fire({
         icon: 'success',
         title: 'Signed in successfully'
         }).then(()=>{
@@ -37,15 +37,14 @@
         }
         )
         }
-        else
-        {
-        Toast.fire({
+        return Toast.fire({
         icon: 'error',
         title: 'Sign in failed'
         })
-        }
+        
         })
         )
+    
     });
     Instascan.Camera.getCameras().then(function (cameras) {
     if (cameras.length > 0) {

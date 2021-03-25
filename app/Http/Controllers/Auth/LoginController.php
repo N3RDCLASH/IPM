@@ -55,7 +55,7 @@ class LoginController extends Controller
     }
     public function qrLogin(Request $request)
     {
-        $user = User::where("QRpassword", Hash::make($request->qrcode))->first();
+        $user = User::where("QRpassword", $request->qrcode)->first();
         ($user ? Auth::guard('web')->login($user) : false);
         return (Auth::user() ? json_encode(["login_success" => true]) : json_encode(["login_success" => false]));
     }
