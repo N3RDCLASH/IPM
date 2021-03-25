@@ -14,7 +14,7 @@
 
 @if( !Auth::user())
 @push('scripts')
-<script type="text/javascript" src="{{ URL::asset('/paper/js/instascan.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('/paper/js/plugins/instascan.min.js') }}"></script>
 
 <script type="text/javascript">
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });

@@ -31,22 +31,22 @@ Route::post('/student', [App\Http\Controllers\UserController::class, 'storeStude
 Route::post('/admin', [App\Http\Controllers\UserController::class, 'storeUser']);
 
 
-Route::get('Student/Delete/{id}', [App\Http\Controllers\UserController::class,'destroyStudent']);
-Route::get('Student/Update/{id}', [App\Http\Controllers\UserController::class,'updatest']);
+Route::get('Student/Delete/{id}', [App\Http\Controllers\UserController::class, 'destroyStudent']);
+Route::get('Student/Update/{id}', [App\Http\Controllers\UserController::class, 'updatest']);
 
 
-Route::get('user/Delete/{id}', [App\Http\Controllers\UserController::class,'destroy']);
-Route::get('user/Update/{id}', [App\Http\Controllers\UserController::class,'updateus']);
-Route::get('user/view/{id}', [App\Http\Controllers\UserController::class,'showid']);
+Route::get('user/Delete/{id}', [App\Http\Controllers\UserController::class, 'destroy']);
+Route::get('user/Update/{id}', [App\Http\Controllers\UserController::class, 'updateus']);
+Route::get('user/view/{id}', [App\Http\Controllers\UserController::class, 'showid']);
 
 
 
 
-Route::post('Student/Update/{id}', [App\Http\Controllers\UserController::class,'update_st']);
-Route::post('user/Update/{id}', [App\Http\Controllers\UserController::class,'update_us']);
+Route::post('Student/Update/{id}', [App\Http\Controllers\UserController::class, 'update_st']);
+Route::post('user/Update/{id}', [App\Http\Controllers\UserController::class, 'update_us']);
 
 
-Route::get('/Student/view/{id}',[App\Http\Controllers\UserController::class,'showStudent']);
+Route::get('/Student/view/{id}', [App\Http\Controllers\UserController::class, 'showStudent']);
 
 
 

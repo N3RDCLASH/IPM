@@ -18,6 +18,14 @@
                     <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
+            <li class="{{ $elementActive == 'profile' ? 'active' : '' }}">
+                <a href="{{ route('profile.edit') }}">
+                    <i class="nc-icon nc-single-02"></i>
+                    <p>{{ __('Profile') }}</p>
+                </a>
+            </li>
+            @if(Auth::user()->hasRole('admin'))
+
             <li class="{{ $elementActive == 'users' ? 'active' : '' }}">
                 <a href="{{ route('users') }}">
                     <i class="nc-icon nc-single-02"></i>
@@ -36,9 +44,10 @@
                     <p>{{ __('Richtingen') }}</p>
                 </a>
             </li>
+            @endif
             <li class="{{ $elementActive == 'services' ? 'active' : '' }}">
                 <a href="{{ route('services') }}">
-                    <i class="nc-icon nc-bank"></i>
+                    <i class="nc-icon nc-cart-simple"></i>
                     <p>{{ __('Services') }}</p>
                 </a>
             </li>

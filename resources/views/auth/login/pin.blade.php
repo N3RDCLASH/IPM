@@ -94,9 +94,8 @@
                 window.location= `/home`
                 }
                 )
-
             }
-            if (!data.login_success)
+           else
             {
                 Toast.fire({
                 icon: 'error',

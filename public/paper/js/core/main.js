@@ -1,4 +1,7 @@
-axios.defaults.withCredentials = true;
+document.addEventListener('DOMContentLoaded', () => {
+    axios.defaults.withCredentials = true;
+    console.log('axios initialized')
+})
 
 const checkFullPageBackgroundImage = () => {
     $page = $('.full-page');
