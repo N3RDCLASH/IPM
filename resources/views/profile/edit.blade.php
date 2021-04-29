@@ -4,7 +4,7 @@
 ])
 <?php
 $user = Auth::user();
-
+$isStudent = $user->hasRole('student');
 ?>
 
 @section('content')
@@ -21,7 +21,8 @@ $user = Auth::user();
     @endif
     <div class="row">
         <div class="col-md-4">
-            <div class="card card-user" id="studentenkaart">
+            <div class="card card-user" id="{{$isStudent ?"studentenkaart":"adminkaart"}}">
+                @if($isStudent)
                 <div class="card-body">
                     <div class="qrcode">
                         <div id="placeHolder"></div>
@@ -70,6 +71,7 @@ $user = Auth::user();
                     </div>
                 </div>
             </div>
+            @endif
         </div>
         <div class="card">
             <div class="card-header">
@@ -255,6 +257,7 @@ $user = Auth::user();
 </div>
 </div>
 @endsection
+@if ($isStudent)
 @push('scripts')
 <script type="text/javascript" src="{{ URL::asset('/paper/js/plugins/qrcode.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('/paper/js/plugins/html2canvas.min.js') }}"></script>
@@ -302,3 +305,4 @@ function saveAs(uri, filename) {
 }
 </script>
 @endpush
+@endif

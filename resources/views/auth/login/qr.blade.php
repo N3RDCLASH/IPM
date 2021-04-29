@@ -18,10 +18,13 @@
 
 <script type="text/javascript">
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview'),scanPeriod: 4});
+    let signedIn = false
     const initializeScanner = ()=>{
     scanner.addListener('scan', function (content) {
+        if(!signedIn){
         axios.get('/sanctum/csrf-cookie')
-        .then(
+        .then( ()=>{
+
         axios.post('api/login/qr',{
         qrcode:content
         })
@@ -32,8 +35,9 @@
         icon: 'success',
         title: 'Signed in successfully'
         }).then(()=>{
+            signedin =true
         clearInputs()
-        window.location= `/home`
+        window.location.replace('home')
         }
         )
         }
@@ -43,7 +47,7 @@
         })
         
         })
-        )
+        })}
     
     });
     Instascan.Camera.getCameras().then(function (cameras) {
