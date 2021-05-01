@@ -1,8 +1,11 @@
-.form-group input[type=file] {
-    opacity: 1!important;
-    margin: 2em 0!important;
-    padding-bottom: 30px!important;
+.form-group input[type="file"] {
+    opacity: 1 !important;
+    margin: 2em 0 !important;
+    padding-bottom: 30px !important;
 }
-#serviceSubmitButton{
-        margin-top: 2em;
+#serviceSubmitButton {
+    margin-top: 2em;
+}
+.icon-huge {
+    font-size: 5em;
 }

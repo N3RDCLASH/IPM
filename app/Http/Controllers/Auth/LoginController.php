@@ -48,15 +48,22 @@ class LoginController extends Controller
     }
     public function pinLogin(Request $request)
     {
-        $user = User::where("pincode", $request->pincode)->first();
-        ($user ? Auth::guard('web')->login($user) : false);
-
-        return (Auth::user() ? json_encode(["login_success" => true]) : json_encode(["login_success" => false]));
+        if ($request->pincode !== null) {
+            $user = User::where("pincode", $request->pincode)->first();
+            ($user ? Auth::login($user) : false);
+            return (Auth::check() ? json_encode(["login_success" => true]) : json_encode(["login_success" => false]));
+        }
+        return json_encode(["login_success" => false, "message" => "invalid request body"]);
     }
+
     public function qrLogin(Request $request)
     {
-        $user = User::where("QRpassword", $request->qrcode)->first();
-        ($user ? Auth::guard('web')->login($user) : false);
-        return (Auth::user() ? json_encode(["login_success" => true]) : json_encode(["login_success" => false]));
+        if ($request->qrcode !== null) {
+
+            $user = User::where("QRpassword", $request->qrcode)->firstorfail();
+            ($user ? Auth::login($user) : false);
+            return (Auth::check() ? json_encode(["login_success" => true]) : json_encode(["login_success" => false]));
+        }
+        return json_encode(["login_success" => false, "message" => "invalid request body"]);
     }
 }

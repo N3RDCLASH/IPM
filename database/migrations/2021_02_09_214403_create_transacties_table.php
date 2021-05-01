@@ -15,7 +15,11 @@ class CreateTransactiesTable extends Migration
     {
         Schema::create('transacties', function (Blueprint $table) {
             $table->id();
-            $table->integer('service_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('service_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('transactie_type')->nullable();
+            $table->foreign('service_id')->references('id')->on('services');
             $table->timestamp('transactie_datum')->useCurrent();
         });
     }

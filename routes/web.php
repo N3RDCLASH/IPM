@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers;
+use App\Http\Controllers\ServicesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +20,11 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/saldo', [App\Http\Controllers\SaldoController::class, 'index'])->name('saldo');
+
+Route::get('/test', function () {
+	$x = new ServicesController;
+	$x->downloadFile(2, 1);
+});
 
 
 
@@ -57,6 +61,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('richtingen', 'App\Http\Controllers\RichtingController')->name('index', 'richtingen');
 	Route::resource('studentklas', 'App\Http\Controllers\StudentKlasController');
 
+	Route::get('/saldo', [App\Http\Controllers\SaldoController::class, 'index'])->name('saldo');
+	Route::post('/opwaarderen', [App\Http\Controllers\SaldoController::class, 'saldoOpwaarderen'])->name('opwaarderen');
 
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
