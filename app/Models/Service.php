@@ -13,6 +13,7 @@ class Service extends Model
         'service_naam',
         'service_beschrijving',
         'service_document',
+        'service_prijs'
     ];
 
     public function createService($data)
@@ -22,6 +23,7 @@ class Service extends Model
             "service_naam" => $data['service_naam'],
             "service_beschrijving" => $data['service_beschrijving'],
             "service_document" => $data['service_document'],
+            "service_prijs" => $data['service_prijs']
         ]);
     }
 
@@ -34,9 +36,10 @@ class Service extends Model
     {
         // return $this::where('service_id', $id)->update(['service_naam' => $data['service_naam']]);
         $service = $this->find($id);
-        $service->richting_naam = $data['service_naam'];
+        $service->service_naam = $data['service_naam'];
         $service->service_beschrijving = $data['service_beschrijving'];
         $service->service_document = $data['service_document'];
+        $service->service_prijs = $data['service_prijs'];
         $service->save();
     }
 

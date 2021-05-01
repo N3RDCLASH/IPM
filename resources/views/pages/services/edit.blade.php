@@ -45,7 +45,14 @@
                         <label for="serviceInputDocument">Service Document</label>
                         <input type="file" class="form-control-file" id="serviceInputDocument" name="service_document">
                     </div>
-
+                    <br>
+                    <div class="form-group">
+                        <label for="serviceInputPrijs">Service Beschrijving</label>
+                        <input type="number" class="form-control" id="serviceInputPrijs"
+                            value="{{$service->service_prijs}}" name="service_prijs"
+                            aria-describedby="prijsHelp" placeholder="Vul service prijs in...">
+                    </div>
+                    
                     <button type="submit" id="serviceSubmitButton" class="btn btn-primary">Submit</button>
                 </form>
             </div>

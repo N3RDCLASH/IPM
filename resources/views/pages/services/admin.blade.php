@@ -17,6 +17,7 @@
                         <th>Naam</th>
                         <th>Beschrijving</th>
                         <th>Document</th>
+                        <th>Prijs</th>
                         <th></th>
                     </thead>
                     <tbody>
@@ -26,6 +27,7 @@
                             <td>{{$service->service_naam}}</td>
                             <td>{{$service->service_beschrijving}}</td>
                             <td>{{$service->service_document}}</td>
+                            <td>{{$service->service_prijs}}</td>
                             <td>
                                 <a href="{{action([ServicesController::class,'show'],[$service])}}">
                                     <i class="fas fa-eye"></i>
@@ -102,7 +104,12 @@
                         <label for="serviceInputDocument">Service Document</label>
                         <input type="file" class="form-control-file" id="serviceInputDocument" name="service_document">
                     </div>
-
+                    <br>
+                    <div class="form-group">
+                        <label for="serviceInputPrijs">Service Prijs</label>
+                        <input type="number" class="form-control" id="serviceInputPrijs" value="" name="service_prijs"
+                            aria-describedby="prijsHelp" placeholder="Vul service prijs in...">
+                    </div>
 
                     <button type="submit" id="serviceSubmitButton" class="btn btn-primary">Submit</button>
                 </form>

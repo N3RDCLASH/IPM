@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\Student;
 use Facade\FlareClient\Stacktrace\File;
+use Illuminate\Support\Facades\Storage;
+
+require(app_path() . '\..\vendor\tinybutstrong\tinybutstrong\tbs_class.php');
+require(app_path() . '\..\vendor\tinybutstrong\opentbs\tbs_plugin_opentbs.php');
 
 class ServicesController extends Controller
 {
@@ -39,7 +44,7 @@ class ServicesController extends Controller
     {
         // dd($request);
         $service = new Service();
-        $service->create(["service_naam" => $request->service_naam, "service_beschrijving" => $request->service_beschrijving, 'service_document' => $this->fileUpload($request)]);
+        $service->createService(["service_naam" => $request->service_naam, "service_beschrijving" => $request->service_beschrijving, 'service_document' => $this->fileUpload($request), 'service_prijs' => $request->service_prijs]);
         return redirect(route('services'));
     }
 
@@ -73,10 +78,10 @@ class ServicesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, Service $service, $id)
+    public function update(Request $request, Service $service)
     {
-        $service->updateService($request->only(["service_naam", "service_beschrijving", "service_document"]),$service->$id);
-        return redirect()->action([ServicesController::class, "edit"], $service->$id);
+        $service->updateService($request->only(["service_naam", "service_beschrijving", "service_document", "service_prijs"]), $service->id);
+        return redirect()->action([ServicesController::class, "edit"], $service->id);
     }
 
     /**
@@ -99,12 +104,6 @@ class ServicesController extends Controller
         // return view('pages.services.service')->with(['service' => $service]);
     }
 
-    // public function destroy(Richting $richting, $id)
-    // {
-    //     $richting->deleteRichting($id);
-    //     return redirect()->action([RichtingController::class, 'index']);
-    // }
-
     public function fileUpload(Request $req)
     {
 
@@ -115,5 +114,21 @@ class ServicesController extends Controller
             // returns storage path
             return ('/storage/' . $filePath);
         }
+    }
+
+    public function downloadFile($user_id, $service_id)
+    {
+        $user_data = Student::where('user_id', $user_id)->first()->toArray();
+        // $file = Service::find($service_id)->service_document;
+        dd($user_data);
+
+        // $TBS = new \clsTinyButStrong;
+        // $TBS->Plugin(TBS_INSTALL, 'clsOpenTBS');
+        // $TBS->LoadTemplate(public_path(Storage::url($file)));
+        // // dd(public_path(Storage::url('public' . $file)));
+        // foreach ($user_data as $key => $value) {
+        //     $TBS->Source = str_replace("{{{$key}}}", $value, $TBS->Source);
+        // }
+        // $TBS->Show(OPENTBS_DOWNLOAD);
     }
 }

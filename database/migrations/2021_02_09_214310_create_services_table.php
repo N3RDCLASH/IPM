@@ -19,6 +19,7 @@ class CreateServicesTable extends Migration
             $table->string('service_naam');
             $table->string('service_beschrijving');
             $table->string('service_document');
+            $table->float('service_prijs')->nullable();
             $table->datetime('created_at');
             $table->datetime('updated_at');
         });
