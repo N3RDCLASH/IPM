@@ -53,6 +53,8 @@ class User extends Authenticatable
         $user = new User();
     $user->user_naam = $data['Vname'] . request('Aname'); // will see
     $user->password = Hash::make('lol');
+    $user->pincode =  $data['pin'];
+    $user-> QRpassword = Hash::make( $data['Vname'] . $data['pin']);
     $user->save();
     }
 }

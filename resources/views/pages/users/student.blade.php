@@ -118,6 +118,27 @@ $url = action([UserController::class, 'storeStudent']);
                                 <input type="date" class="form-control" id="" placeholder="" name="Verval">
                             </div>
                         </div>
+
+                        <!--  col-md-6   -->
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Email adress</label>
+                                <input type="email" class="form-control" id="" placeholder="" name="email">
+                            </div>
+                        </div>
+
+                         <!--  col-md-6   -->
+                         
+                         @php
+                        $fourRandomDigit = rand(100000,999999);
+                        @endphp
+                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">pin</label>
+                                <input type="num" class="form-control" id="" placeholder="" name="pin" value="{{ $fourRandomDigit }}" readonly>
+                            </div>
+                        </div>
                         <!--  col-md-6   -->
 
                         <div class="col-md-6">
