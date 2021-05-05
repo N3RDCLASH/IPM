@@ -1,7 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ServicesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,42 +19,36 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/test', function () {
-	$x = new ServicesController;
-	$x->downloadFile(2, 1);
-});
-
-
-
-//store the save
-Route::post('/student', [App\Http\Controllers\UserController::class, 'storeStudent']);
-
-//store the save User
-Route::post('/admin', [App\Http\Controllers\UserController::class, 'storeUser']);
-
-
-Route::get('Student/Delete/{id}', [App\Http\Controllers\UserController::class, 'destroyStudent']);
-Route::get('Student/Update/{id}', [App\Http\Controllers\UserController::class, 'updatest']);
-
-
-Route::get('user/Delete/{id}', [App\Http\Controllers\UserController::class, 'destroy']);
-Route::get('user/Update/{id}', [App\Http\Controllers\UserController::class, 'updateus']);
-Route::get('user/view/{id}', [App\Http\Controllers\UserController::class, 'showid']);
-
-
-
-
-Route::post('Student/Update/{id}', [App\Http\Controllers\UserController::class, 'update_st']);
-Route::post('user/Update/{id}', [App\Http\Controllers\UserController::class, 'update_us']);
-
-
-Route::get('/Student/view/{id}', [App\Http\Controllers\UserController::class, 'showStudent']);
-
-
-
 Route::group(['middleware' => 'auth'], function () {
+	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+	//store the save
+	Route::post('/student', [App\Http\Controllers\UserController::class, 'storeStudent']);
+
+	//store the save User
+	Route::post('/admin', [App\Http\Controllers\UserController::class, 'storeUser']);
+
+
+	Route::get('Student/Delete/{id}', [App\Http\Controllers\UserController::class, 'destroyStudent']);
+	Route::get('Student/Update/{id}', [App\Http\Controllers\UserController::class, 'updatest']);
+
+
+	Route::get('user/Delete/{id}', [App\Http\Controllers\UserController::class, 'destroy']);
+	Route::get('user/Update/{id}', [App\Http\Controllers\UserController::class, 'updateus']);
+	Route::get('user/view/{id}', [App\Http\Controllers\UserController::class, 'showid']);
+
+
+
+
+	Route::post('Student/Update/{id}', [App\Http\Controllers\UserController::class, 'update_st']);
+	Route::post('user/Update/{id}', [App\Http\Controllers\UserController::class, 'update_us']);
+
+
+	Route::get('/Student/view/{id}', [App\Http\Controllers\UserController::class, 'showStudent']);
+
+
+
 	Route::resource('services', 'App\Http\Controllers\ServicesController')->name('index', 'services');
 	Route::resource('users', 'App\Http\Controllers\UserController')->name('index', 'users');
 	Route::resource('klassen', 'App\Http\Controllers\KlasController')->name('index', 'klassen');

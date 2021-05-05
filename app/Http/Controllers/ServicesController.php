@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\Student;
-use Facade\FlareClient\Stacktrace\File;
+use Error;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use NcJoes\OfficeConverter\OfficeConverter;
 
 require(app_path() . '\..\vendor\tinybutstrong\tinybutstrong\tbs_class.php');
 require(app_path() . '\..\vendor\tinybutstrong\opentbs\tbs_plugin_opentbs.php');
@@ -112,23 +114,56 @@ class ServicesController extends Controller
             $filePath = $req->file('service_document')->storeAs('uploads', $fileName, 'public');
 
             // returns storage path
-            return ('/storage/' . $filePath);
+            return ($filePath);
         }
     }
 
-    public function downloadFile($user_id, $service_id)
+    public function downloadFile()
     {
-        $user_data = Student::where('user_id', $user_id)->first()->toArray();
-        // $file = Service::find($service_id)->service_document;
-        dd($user_data);
+        $user_id = request()->query('user_id');
+        $service_id = request()->query('service_id');
 
-        // $TBS = new \clsTinyButStrong;
-        // $TBS->Plugin(TBS_INSTALL, 'clsOpenTBS');
-        // $TBS->LoadTemplate(public_path(Storage::url($file)));
-        // // dd(public_path(Storage::url('public' . $file)));
-        // foreach ($user_data as $key => $value) {
-        //     $TBS->Source = str_replace("{{{$key}}}", $value, $TBS->Source);
-        // }
-        // $TBS->Show(OPENTBS_DOWNLOAD);
+        $student = new Student;
+        $user_data = $this->formatUserData(
+            $student->getFullStudentData($user_id)
+        );
+
+        $service = Service::find($service_id);
+        $file = $service->service_document;
+
+        // TBS file importing
+        $TBS = new \clsTinyButStrong;
+        $TBS->Plugin(TBS_INSTALL, 'clsOpenTBS');
+        $TBS->LoadTemplate(public_path(Storage::url($file)));
+
+        // Change user values in template
+        foreach ($user_data as $key => $value) {
+            $TBS->Source = str_replace("{{{$key}}}", $value, $TBS->Source);
+        }
+        // store generated document on server
+        $path = "storage/uploads/tmp/{$service->service_naam}_user_$user_id.docx";
+        $TBS->Show(OPENTBS_FILE, $path);
+
+        //convert docx to pdf using libre office console command
+        exec('start /wait soffice --convert-to pdf ' . public_path($path) . ' --outdir ' . public_path('storage\uploads\tmp'));
+        // return download 
+        $saldo_controller = new SaldoController;
+
+        if ($saldo_controller->transactieAanmaken($user_id, $service_id))
+            return  response()->download(public_path("storage/uploads/tmp/{$service->service_naam}_user_$user_id.pdf"), "{$service->service_naam}_{$user_data['naam']}_" . now() . ".pdf");
+
+        return Log::error("Document kon niet gegenereerd worden");
+    }
+    protected function formatUserData($data)
+    {
+        setlocale(LC_TIME, 'Dutch');
+        // return $data;
+        return [
+            "naam" => $data['voor_naam'] . ' ' . $data['achter_naam'],
+            "datum" => strftime("%e %B %Y"),
+            "klas" => $data['klas'],
+            "richting" => $data['richting_naam'],
+            "schooljaar" => $data['school_jaar'],
+        ];
     }
 }
