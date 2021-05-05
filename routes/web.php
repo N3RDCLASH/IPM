@@ -67,4 +67,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
+
+	Route::post('services/download', ['as' => 'services.download', 'uses' => 'App\Http\Controllers\ServicesController@downloadFile']);
+	Route::post('opwaardering/accept/{opwaardering_id}', ['as' => 'opwaardering.accept', 'uses' => 'App\Http\Controllers\SaldoController@opwaarderingAccepteren']);
+	Route::post('opwaarderen/decline/{opwaardering_id}', ['as' => 'opwaardering.decline', 'uses' => 'App\Http\Controllers\SaldoController@opwaarderingAfkeuren']);
 });

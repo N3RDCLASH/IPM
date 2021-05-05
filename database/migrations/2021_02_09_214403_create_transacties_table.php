@@ -21,6 +21,7 @@ class CreateTransactiesTable extends Migration
             $table->string('transactie_type')->nullable();
             $table->foreign('service_id')->references('id')->on('services');
             $table->timestamp('transactie_datum')->useCurrent();
+            $table->timestamps();
         });
     }
 

@@ -1,6 +1,6 @@
 <?php 
 
-use App\Http\Controller\SaldoControlller;
+use App\Http\Controller\SaldoController;
 ?>
 
 <div class="row">
@@ -97,7 +97,7 @@ use App\Http\Controller\SaldoControlller;
                             @else
                             <tr>
                                 <td colspan="4">
-                                    Er zijn geen transacties beschikbaar
+                                    Er zijn geen opwaarderingen beschikbaar
                                 </td>
                             </tr>
                             @endif
