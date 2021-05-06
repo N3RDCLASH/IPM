@@ -55,6 +55,7 @@ class UserController extends Controller
     {
         $usergegevens = User::findOrFail($id);
 
+        // change dircetory
         return view('pages.Us_details', ['Userid' => $usergegevens]);
     }
 
@@ -62,6 +63,7 @@ class UserController extends Controller
     {
         $student = Student::findOrFail($id);
 
+        // change dircetory
         return view('pages.Updatest', ['Updateidst' => $student]);
     }
 
@@ -70,6 +72,7 @@ class UserController extends Controller
     {
         $usergegevens = User::findOrFail($id);
 
+        // change dircetory
         return view('pages.updateus', ['Updateid' => $usergegevens]);
     }
     //save update
@@ -94,11 +97,11 @@ class UserController extends Controller
 
 
     //save it first
-    public function storeStudent()
+    public function storeStudent(request $req)
     {
         $user = new User();
-        $user->createStudent(request()->only(["Vname", "Aname", "password"]));
-
+        $user->createStudent(request()->only(["Vname", "Aname", "password","pin"]));
+        $user->assignRole('student');
 
         $student = new Student();
         $student->CreateStudent($user->id);
@@ -114,15 +117,17 @@ class UserController extends Controller
 
 
     // save user
-    public function storeUser()
+    public function storeUser(request $req)
     {
 
         $user = new User();
         $user->createAdmin(request()->only(["username", "password"]));
         $user->save();
 
-        return redirect('/users')->with('mssg', 'Record has been Created succesfully');
-    }
+        // assign role
+    $user->assignRole('admin');
+    return redirect('/users')->with('mssg', 'Record has been Created succesfully');
+}
 
     public function getAllStudents()
     {
