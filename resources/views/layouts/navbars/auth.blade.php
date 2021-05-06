@@ -26,23 +26,49 @@
             </li>
             @if(Auth::user()->hasRole('admin'))
 
-            <li class="{{ $elementActive == 'users' ? 'active' : '' }}">
-                <a href="{{ route('users') }}">
-                    <i class="nc-icon nc-single-02"></i>
-                    <p>{{ __('Users') }}</p>
+
+            <li>
+                <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                    <span href="#">
+                        <i class="nc-icon nc-ruler-pencil"></i>
+                    </span>{{ __('Administratie') }}</p>
+                    <b class="caret"></b>
                 </a>
-            </li>
-            <li class="{{ $elementActive == 'klassen' ? 'active' : '' }}">
-                <a href="{{ route('klassen') }}">
-                    <i class="nc-icon nc-ruler-pencil"></i>
-                    <p>{{ __('Klassen') }}</p>
-                </a>
-            </li>
-            <li class="{{ $elementActive == 'richtingen' ? 'active' : '' }}">
-                <a href="{{ route('richtingen') }}">
-                    <i class="nc-icon nc-tag-content"></i>
-                    <p>{{ __('Richtingen') }}</p>
-                </a>
+                <div class="clearfix"></div>
+                <div class="collapse show" id="collapseExample">
+                    <ul class="nav">
+                        <li class="{{ $elementActive == 'users' ? 'active' : '' }}">
+                            <a href="{{ route('users') }}">
+                                <i class="nc-icon nc-single-02"></i>
+                                <p>{{ __('Users') }}</p>
+                            </a>
+                        </li>
+                        <li class="{{ $elementActive == 'klassen' ? 'active' : '' }}">
+                            <a href="{{ route('klassen') }}">
+                                <i class="nc-icon nc-hat-3"></i>
+                                <p>{{ __('Klassen') }}</p>
+                            </a>
+                        </li>
+                        <li class="{{ $elementActive == 'richtingen' ? 'active' : '' }}">
+                            <a href="{{ route('richtingen') }}">
+                                <i class="nc-icon nc-tag-content"></i>
+                                <p>{{ __('Richtingen') }}</p>
+                            </a>
+                        </li>
+                        <li class="{{ $elementActive == 'vakken' ? 'active' : '' }}">
+                            <a href="{{ route('vakken') }}">
+                                <i class="nc-icon nc-ruler-pencil"></i>
+                                <p>{{ __('Vakken') }}</p>
+                            </a>
+                        </li>
+                        <li class="{{ $elementActive == 'cijfers' ? 'active' : '' }}">
+                            <a href="{{ route('cijfers') }}">
+                                <i class="nc-icon nc-tile-56"></i>
+                                <p>{{ __('Cijfers') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </li>
             @endif
             <li class="{{ $elementActive == 'services' ? 'active' : '' }}">

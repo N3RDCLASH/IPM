@@ -52,6 +52,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('services', 'App\Http\Controllers\ServicesController')->name('index', 'services');
 	Route::resource('users', 'App\Http\Controllers\UserController')->name('index', 'users');
 	Route::resource('klassen', 'App\Http\Controllers\KlasController')->name('index', 'klassen');
+	Route::resource('vakken', 'App\Http\Controllers\VakController')->name('index', 'vakken');
+	Route::resource('cijfers', 'App\Http\Controllers\CijferController')->name('index', 'cijfers');
 	Route::resource('richtingen', 'App\Http\Controllers\RichtingController')->name('index', 'richtingen');
 	Route::resource('studentklas', 'App\Http\Controllers\StudentKlasController');
 

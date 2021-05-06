@@ -15,6 +15,13 @@ class Transactie extends Model
         'service_id',
     ];
 
+    public function createTransactie(int $user_id, $service_id)
+    {
+        return $this->create([
+            "user_id" => $user_id,
+            "service_id" => $service_id,
+        ]);
+    }
     public function getTransactiesPerUser($user_id)
     {
         // dd($user_id);

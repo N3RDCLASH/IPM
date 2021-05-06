@@ -9,3 +9,6 @@
 .icon-huge {
     font-size: 5em;
 }
+.collapse > ul > li > a {
+    margin-left: 55px !important;
+}

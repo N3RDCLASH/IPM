@@ -86,7 +86,13 @@ use App\Http\Controller\SaldoController;
                             @foreach ($opwaarderingen as $opwaardering)
                             <tr>
                                 <td>{{$opwaardering->created_at}}</td>
-                                <td>{{$opwaardering->status}}</td>
+                                <td>
+                                    <span
+                                        class="badge
+                                    {{$opwaardering->status=== "confirmed" ? __('badge-success'): ($opwaardering->status=== "pending" ? __('badge-warning'):__('badge-danger')) }}">{{$opwaardering->status}}
+                                    </span>
+
+                                </td>
                                 <td class="text-right text-bold"> SRD {{$opwaardering->bedrag}}</td>
                                 @if ($opwaardering->status == "pending")
                                 <td><button class="btn btn-sm btn-danger">cancel</button></td>
@@ -207,7 +213,7 @@ use App\Http\Controller\SaldoController;
         var speedCanvas = document.getElementById("speedChart");
         
         var dataFirst = {
-        data: {{json_encode(array_map(fn($x)=>$x['bedrag'],$opwaarderingen->toArray()))}},
+        data: {{json_encode(array_map(fn($x)=>$x['bedrag'],array_filter($opwaarderingen->toArray(),fn($y)=>$y['status']=="confirmed")))}},
         fill: false,
         borderColor: '#6bd098',
         backgroundColor: 'transparent',

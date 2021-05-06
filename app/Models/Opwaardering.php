@@ -18,8 +18,12 @@ class Opwaardering extends Model
         $this->status = 'pending';
         $this->save();
     }
-    public function getAllOpwaarderingen($user_id)
+    public function getOpwaarderingenPerUser($user_id)
     {
-        return $this->where('user_id', $user_id)->get();
+        return $this->where('opwaarderingen.user_id', $user_id)->join('studenten', 'studenten.user_id', '=', 'opwaarderingen.user_id')->get();
+    }
+    public function getAllOpwaarderingen()
+    {
+        return $this->select('opwaarderingen.*', 'studenten.voor_naam', 'studenten.achter_naam')->join('studenten', 'studenten.user_id', '=', 'opwaarderingen.user_id')->get();
     }
 }

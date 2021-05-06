@@ -70,7 +70,7 @@ class SaldoController extends Controller
             return redirect('saldo');
         }
     }
-    public function opwaardering_id($opwaardering_id)
+    public function opwaarderingAfkeuren($opwaardering_id)
     {
         if ($opwaardering =  Opwaardering::find($opwaardering_id)) {
             $opwaardering->update(['status' => 'declined']);

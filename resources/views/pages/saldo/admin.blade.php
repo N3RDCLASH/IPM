@@ -29,7 +29,9 @@ use App\Http\Controller\SaldoController;
                         <tr>
                             <td>{{$opwaardering->voor_naam ." ". $opwaardering->achter_naam}}</td>
                             <td>{{$opwaardering->created_at}}</td>
-                            <td>{{$opwaardering->status}}</td>
+                            <td><span
+                                    class="badge {{$opwaardering->status=== "confirmed" ? __('badge-success'): ($opwaardering->status=== "pending" ? __('badge-warning'):__('badge-danger')) }}">{{$opwaardering->status}}</span>
+                            </td>
                             <td class="text-right text-bold"> SRD {{$opwaardering->bedrag}}</td>
                             @if ($opwaardering->status == "pending")
                             <td>
