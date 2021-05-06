@@ -15,10 +15,12 @@ class CreateCijfersTable extends Migration
     {
         Schema::create('cijfers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('student_klas_id');
+            $table->foreign('studentklas')->references('id')->on('studentklas');
+            $table->unsignedBigInteger('vak');
+            $table->foreign('vak')->references('id')->on('vakken');
             $table->integer('periode');
-            $table->integer('student_klas_id');
-            $table->integer('vak_id');
-            $table->decimal('cijfer', $precision = 2, $scale = 1);
+            $table->decimal('cijfer', $precision = 8, $scale = 1);
         });
     }
 
