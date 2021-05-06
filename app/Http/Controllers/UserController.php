@@ -46,7 +46,7 @@ class UserController extends Controller
 
         $studentgegevens = Student::findOrFail($id);
 
-        return view('pages.St_details', ['student' => $studentgegevens]);
+        return view('pages.users.St_details', ['student' => $studentgegevens]);
     }
 
 
@@ -56,7 +56,7 @@ class UserController extends Controller
         $usergegevens = User::findOrFail($id);
 
         // change dircetory
-        return view('pages.Us_details', ['Userid' => $usergegevens]);
+        return view('pages.users.Us_details', ['Userid' => $usergegevens]);
     }
 
     public function updatest($id)
@@ -64,7 +64,7 @@ class UserController extends Controller
         $student = Student::findOrFail($id);
 
         // change dircetory
-        return view('pages.Updatest', ['Updateidst' => $student]);
+        return view('pages.users.Updatest', ['Updateidst' => $student]);
     }
 
     // go to update
@@ -73,7 +73,7 @@ class UserController extends Controller
         $usergegevens = User::findOrFail($id);
 
         // change dircetory
-        return view('pages.updateus', ['Updateid' => $usergegevens]);
+        return view('pages.users.updateus', ['Updateid' => $usergegevens]);
     }
     //save update
     public function update_st(Request $req)
