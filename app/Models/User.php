@@ -57,4 +57,20 @@ class User extends Authenticatable
     $user-> QRpassword = Hash::make( $data['Vname'] . $data['pin']);
     $user->save();
     }
+
+
+    public function routeNotificationForMail($notification)
+    {
+        $student = new Student();
+        $student::where('user_id',Auth::user()->id)->first();
+        // Return email address only...
+        return $student->email;
+    
+        // Return email address and name...
+        return [$student->email => $student->voor_naam." ".$student->achter_naam];
+
+  
+    }
 }
+
+

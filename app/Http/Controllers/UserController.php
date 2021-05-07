@@ -36,8 +36,11 @@ class UserController extends Controller
     {
 
         $student = Student::findOrFail($id);
+        $user = User::findOrFail($student->user_id);
+       
         $student->delete();
-
+        $user->delete();
+        
         return $this->index()->with('mssg', 'Record has been deleted succesfully'); //moet nog in de user table geplaatst worden
     }
     
@@ -102,6 +105,8 @@ class UserController extends Controller
         $user = new User();
         $user->createStudent(request()->only(["Vname", "Aname", "password","pin"]));
         $user->assignRole('student');
+
+        $user->notify(new MailStudentenkaart());
 
         $student = new Student();
         $student->CreateStudent($user->id);
