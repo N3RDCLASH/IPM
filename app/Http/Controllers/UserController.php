@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Notifications\MailStudentKaart;
 
 class UserController extends Controller
 {
@@ -37,13 +38,13 @@ class UserController extends Controller
 
         $student = Student::findOrFail($id);
         $user = User::findOrFail($student->user_id);
-       
+
         $student->delete();
         $user->delete();
-        
+
         return $this->index()->with('mssg', 'Record has been deleted succesfully'); //moet nog in de user table geplaatst worden
     }
-    
+
     public function showStudent($id)
     {
 
@@ -103,13 +104,13 @@ class UserController extends Controller
     public function storeStudent(request $req)
     {
         $user = new User();
-        $user->createStudent(request()->only(["Vname", "Aname", "password","pin"]));
+        $user->createStudent(request()->only(["Vname", "Aname", "password", "pin", "email"]));
         $user->assignRole('student');
 
-        $user->notify(new MailStudentenkaart());
 
         $student = new Student();
         $student->CreateStudent($user->id);
+        $user->notify(new MailStudentkaart());
         return $this->index();
     }
 
@@ -130,9 +131,9 @@ class UserController extends Controller
         $user->save();
 
         // assign role
-    $user->assignRole('admin');
-    return redirect('/users')->with('mssg', 'Record has been Created succesfully');
-}
+        $user->assignRole('admin');
+        return redirect('/users')->with('mssg', 'Record has been Created succesfully');
+    }
 
     public function getAllStudents()
     {

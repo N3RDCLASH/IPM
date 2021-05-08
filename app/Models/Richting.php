@@ -9,7 +9,6 @@ class Richting extends Model
 {
     use HasFactory;
     protected $table = "richtingen";
-    public $timestamps = false;
 
     protected $fillable = [
         'richting_naam',

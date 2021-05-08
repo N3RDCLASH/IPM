@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('pincode', 6)->nullable();
             $table->string('QRpassword')->nullable();
+            $table->string('email')->unique()->nullable();
             $table->rememberToken();
             $table->datetime('created_at');
             $table->datetime('updated_at');

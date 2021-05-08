@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cijfer;
 use Illuminate\Http\Request;
 
 class CijferController extends Controller
@@ -13,7 +14,9 @@ class CijferController extends Controller
      */
     public function index()
     {
-        return view('pages.cijfers');
+        $cijfer = new Cijfer;
+
+        return view('pages.cijfers')->with(["cijfers" => $cijfer->getCijfers()]);
     }
 
     /**
@@ -35,6 +38,24 @@ class CijferController extends Controller
     public function store(Request $request)
     {
         //
+        $cijfer = new Cijfer;
+        // dd([isset($request->import), $request->file('cijferlijst') !== null]);
+        if (isset($request->import) && $request->file('cijferlijst') !== null) {
+            $data = $this->importCSV($request->file('cijferlijst'));
+            if (
+                $data[0][0] == "id"  &&
+                $data[0][1] == "vak_id" &&
+                $data[0][2] == "studentklas_id" &&
+                $data[0][3] == "periode" &&
+                $data[0][4] == "cijfer"
+            ) {
+
+                foreach ($data as $row) {
+                    if (is_numeric($row[0]))
+                        $cijfer->createCijfer($row);
+                }
+            }
+        }
     }
 
     /**
@@ -80,5 +101,15 @@ class CijferController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function importCSV($file)
+    {
+        $data = [];
+        $file = fopen($file, 'r');
+        while ($row = fgetcsv($file)) {
+            array_push($data, $row);
+        };
+        return $data;
     }
 }

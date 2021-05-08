@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vak;
 use Illuminate\Http\Request;
 
 class VakController extends Controller
@@ -13,7 +14,7 @@ class VakController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.vakken')->with(["vakken" => Vak::all()]);
     }
 
     /**

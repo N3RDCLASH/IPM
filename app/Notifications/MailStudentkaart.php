@@ -41,9 +41,9 @@ class MailStudentkaart extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->line('The introduction to the notification.')
-        ->action('Go to login page', url('/'))
-        ->line('Thank you for using our application!');
+            ->line('The introduction to the notification.')
+            ->action('Go to login page', url('/'))
+            ->line('Thank you for using our application!');
     }
 
     /**

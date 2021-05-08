@@ -21,7 +21,6 @@ class CreateStudentenTable extends Migration
             $table->string('geboorte_plaats');
             $table->date('uitgave_datum');
             $table->date('verval_datum');
-            $table->string('email')->unique()->nullable();
             $table->decimal('saldo', $precision = 8, $scale = 2); 
             $table->timestamps();
             $table->foreignId('user_id')->nullable()->constrained('users');

@@ -46,7 +46,6 @@ class Student extends Model
         $this->geboorte_plaats = request('Plaats');
         $this->uitgave_datum = request('Uitgave');
         $this->verval_datum = request('Verval');
-        $this->email = request('email');
         $this->saldo = request('Saldo');
         $this->user_id =  $user_id;
         $this->save();
