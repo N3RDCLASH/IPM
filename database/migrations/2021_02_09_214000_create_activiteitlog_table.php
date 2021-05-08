@@ -16,7 +16,7 @@ class CreateActiviteitlogTable extends Migration
         Schema::create('activiteitlog', function (Blueprint $table) {
             $table->id();
             $table->integer('student_id');
-            $table->timestamp('log_datum')->useCurrent();;
+            $table->timestamp('log_datum')->useCurrent();
             $table->string('actie_naam');
         });
     }
