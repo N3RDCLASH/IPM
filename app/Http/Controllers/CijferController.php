@@ -15,7 +15,9 @@ class CijferController extends Controller
     public function index()
     {
         $cijfer = new Cijfer;
-
+        // $klassen = array_unique(array_map(fn ($x) => $x['klas'], $cijfer->getCijfers()->toArray()));
+        // $vakken = array_unique(array_map(fn ($x) => $x['vak_naam'], $cijfer->getCijfers()->toArray()));
+        // $periode = array_unique(array_map(fn ($x) => $x['periode'], $cijfer->getCijfers()->toArray()));
         return view('pages.cijfers')->with(["cijfers" => $cijfer->getCijfers()]);
     }
 
@@ -54,6 +56,7 @@ class CijferController extends Controller
                     if (is_numeric($row[0]))
                         $cijfer->createCijfer($row);
                 }
+                return redirect(route('cijfers'));
             }
         }
     }

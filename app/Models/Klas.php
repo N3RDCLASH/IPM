@@ -8,10 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Klas extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'klassen';
     protected $fillable = ["klas,richting_id,jaar"];
 
+    public function getKlassen()
+    {
+        return $this
+            ->join('richtingen', 'richtingen.id', '=', 'klassen.richting_id')
+            ->get();
+    }
     public function createKlas($data)
     {
         $this->klas = $data['klas'];

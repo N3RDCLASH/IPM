@@ -37,7 +37,7 @@ $year = date('Y');
                             @foreach($klassen as $klas)
                             <tr data-id="">
                                 <td>{{$klas->klas}}</td>
-                                <td>{{$klas->richting_id}}</td>
+                                <td>{{$klas->richting_naam}}</td>
                                 <td>{{$klas->jaar}}</td>
                                 <td><a href="{{action([KlasController::class,'show'],[$klas])}}">
                                         <i class="fas fa-eye"></i>

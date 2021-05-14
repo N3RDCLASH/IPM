@@ -23,7 +23,7 @@ class Cijfer extends Model
             ->join("studentklas", "studentklas.id", "=", "cijfers.studentklas_id")
             ->join('studenten', 'studenten.id', '=', 'studentklas.student_id')
             ->join('klassen', 'klassen.id', '=', 'studentklas.klas_id')
-            ->get();
+            ->paginate(10);
     }
 
     public function createCijfer($data)

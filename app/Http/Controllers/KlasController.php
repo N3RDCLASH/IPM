@@ -19,9 +19,9 @@ class KlasController extends Controller
     public function index()
     {
         //
-        $klassen = Klas::all();
+        $klas = new Klas;
         $richtingen = Richting::all();
-        return view('pages.klassen')->with(["klassen" => $klassen, 'richtingen' => $richtingen]);
+        return view('pages.klassen')->with(["klassen" => $klas->getKlassen(), 'richtingen' => $richtingen]);
     }
 
     /**

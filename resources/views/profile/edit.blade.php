@@ -161,6 +161,8 @@ $isStudent = $user->hasRole('student');
     </div>
 </div> --}}
 </div>
+@if (auth()->user()->hasRole('admin'))
+
 <div class="col-md-8 text-center">
     <form class="col-md-12" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -269,6 +271,7 @@ $isStudent = $user->hasRole('student');
     </form>
 </div>
 </div>
+@endif
 </div>
 @endsection
 @if ($isStudent)

@@ -12,3 +12,12 @@
 .collapse > ul > li > a {
     margin-left: 55px !important;
 }
+.no-services {
+    background: url(../img/undraw_empty_xct9.svg);
+    background-size: contain;
+    background-position: center;
+    /* background-color: antiquewhite; */
+    height: 50vh;
+    margin: 0;
+    background-repeat: no-repeat;
+}

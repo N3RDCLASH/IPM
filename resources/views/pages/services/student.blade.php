@@ -3,6 +3,7 @@ use App\Http\Controllers\ServicesController;
 ?>
 
 <div class="service-items">
+    @if (count($services)>0)
     @foreach ($services as $service )
     <div class="col-md-3">
 
@@ -46,6 +47,16 @@ use App\Http\Controllers\ServicesController;
             </div>
         </div>
         @endforeach
+        @else
+        <div class="no-services">
+        </div>
+        <b>
+            <span class="d-flex justify-content-center">
+                Geen Services beschikbaar...
+            </span>
+        </b>
+        @endif
+
     </div>
 </div>
 

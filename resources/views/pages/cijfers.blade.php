@@ -27,6 +27,7 @@ dd($cijfers->toArray())
                 <div class="table-responsive">
                     <table class="table">
                         <thead class=" text-primary">
+                            <th></th>
                             <th>Vak</th>
                             <th>Klas</th>
                             <th>Student</th>
@@ -34,9 +35,13 @@ dd($cijfers->toArray())
                             <th>Cijfer</th>
                         </thead>
                         <tbody>
+                            @php
+                            $i=1
+                            @endphp
                             @if($cijfers!=="")
                             @foreach($cijfers as $cijfer)
                             <tr data-id="">
+                                <td>@php if(isset($_GET['page'])) {echo $i++ + 10 * ($_GET['page']-1);}@endphp</td>
                                 <td>{{$cijfer->vak_naam}}</td>
                                 <td>{{$cijfer->klas}}</td>
                                 <td>{{$cijfer->voor_naam .' '. $cijfer->achter_naam}}</td>
@@ -72,6 +77,12 @@ dd($cijfers->toArray())
                             @endif
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="justify-content-center d-flex">
+
+                    {{ $cijfers->links() }}
                 </div>
             </div>
         </div>
