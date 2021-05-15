@@ -94,7 +94,7 @@ formatResult:({id,achter_naam,voor_naam})=>{
 return {value:id, text:`${achter_naam} ${voor_naam}`}
 },
 resolverSettings: {
-url: 'http://ipm.me/api/student/all'
+url: `http://${window.location.host}/api/student/all`
 },
 minLength:2,});
 </script>

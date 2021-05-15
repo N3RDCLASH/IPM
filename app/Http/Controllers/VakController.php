@@ -35,7 +35,10 @@ class VakController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $vak = new Vak;
+        $vak->vak_naam = $request->vak;
+        $vak->save();
+        return redirect(route('vakken'));
     }
 
     /**
@@ -46,7 +49,8 @@ class VakController extends Controller
      */
     public function show($id)
     {
-        //
+        $vak = Vak::find($id);
+        return view('pages.vakken.vak')->with(['vak' => $vak]);
     }
 
     /**
@@ -57,7 +61,8 @@ class VakController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vak = Vak::find($id);
+        return view('pages.vakken.edit')->with(['vak' => $vak]);
     }
 
     /**
@@ -69,7 +74,10 @@ class VakController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
+        $vak = Vak::find($id);
+        $vak->vak = $request->vak_naam;
+        return view('pages.vakken.edit')->with(['vak' => $vak]);
     }
 
     /**

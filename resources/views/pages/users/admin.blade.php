@@ -86,7 +86,7 @@ $url = action([UserController::class, 'storeUser']);
                             <div class="form-group">
                                 <label for="last">Password
                                 </label>
-                                <input type="text" class="form-control" placeholder="" name="password" id="last">
+                                <input type="password" class="form-control" placeholder="" name="password" id="last">
                             </div>
                             <button type="submit" id="serviceSubmitButton" class="btn btn-primary">Submit</button>
                         </div>

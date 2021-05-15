@@ -83,10 +83,10 @@ use App\Http\Controllers\ServicesController;
     }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
-    Swal.fire('Uw opwaarderingen is aangemaakt!', '', 'success')
+    Swal.fire('Uw document is aangemaakt!', '', 'success')
     document.getElementById(`service_download_${id}`).submit()
     } else if (result.isDenied) {
-    Swal.fire('Uw opwaarderingen is niet aangemaakt!', '', 'error')
+    Swal.fire('Uw document is niet aangemaakt!', '', 'error')
     }
     })
     
